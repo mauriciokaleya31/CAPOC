@@ -181,7 +181,7 @@ export default function Impact() {
               >
                 {/* Real-life organic farmer from Cabinda with crops */}
                 <img 
-                  src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.51.52.jpeg" 
+                  src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.39.jpeg" 
                   alt="Agricultor de Palmeira de Óleo de Cabinda CAPOC" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -226,7 +226,7 @@ export default function Impact() {
 
             {/* Right: Modern icon card list with glassmorphism */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {impactos.map((imp, index) => (
+              {impactos.slice(0, 4).map((imp, index) => (
                 <motion.div 
                   key={index} 
                   initial={{ opacity: 0, y: 20 }}

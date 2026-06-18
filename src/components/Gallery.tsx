@@ -83,24 +83,6 @@ export default function Gallery() {
       desc: "Ensaios de pressão nas tubagens secundárias e estruturação das instalações industriais de extração térmica.",
       imgUrl: "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.32.jpeg",
       badge: "Complexo Industrial"
-    },
-    {
-      id: 6,
-      category: "plantacao",
-      title: "Limpeza Mecânica Seletiva e Sustentável",
-      location: "Lotes de Cultivo, Cabinda",
-      desc: "Remoção de biomassa sem fumo seguindo diretrizes do selo de sustentabilidade sem queimas abertas (Zero-Burning Policy).",
-      imgUrl: "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.38.jpeg",
-      badge: "Zero Desflorestamento"
-    },
-    {
-      id: 7,
-      category: "processamento",
-      title: "Pesagem Geral e Descarregamento Industrial",
-      location: "Complexo Fabril, Cabinda",
-      desc: "Báscula de pesagem inteligente que monitoriza a entrada e saída mecânica de carretas de transporte de frutos agrícolas.",
-      imgUrl: "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.31.jpeg",
-      badge: "Sistemas Inteligentes"
     }
   ];
 

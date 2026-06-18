@@ -1,0 +1,6 @@
+{
+  "name": "CAPOC - Cabinda Palm Oil Corporation",
+  "description": "Website institucional da CAPOC - Cabinda Palm Oil Corporation. Agricultura sustentável e industrialização em Cabinda, Angola.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

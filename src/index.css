@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Urbanist", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-50: #faf8f2;
+  --color-brand-100: #efead5;
+  --color-brand-200: #dfd5ac;
+  --color-brand-300: #cebf81;
+  --color-brand-400: #bea95b;
+  --color-brand-500: #a89558;
+  --color-brand-650: #8e7c45;
+  --color-brand-700: #756535;
+  --color-brand-750: #5b4f27;
+  --color-brand-800: #42391b;
+  --color-brand-850: #0a1f19;
+  --color-brand-900: #002016;
+  --color-brand-950: #00100b; /* Slate 900 for high-contrast professional text */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #002016;
+  background-color: #ffffff; /* Elegant white background */
+}

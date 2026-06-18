@@ -11,7 +11,6 @@ import ProjectDetails from "./components/ProjectDetails";
 import Products from "./components/Products";
 import Impact from "./components/Impact";
 import Gallery from "./components/Gallery";
-import InvestorOpportunities from "./components/InvestorOpportunities";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import { LanguageProvider } from "./LanguageContext";
@@ -41,7 +40,6 @@ function AppContent() {
       "sustentabilidade", 
       "impacto", 
       "galeria", 
-      "investidores", 
       "contacto"
     ];
     targetIds.forEach((id) => {
@@ -81,9 +79,6 @@ function AppContent() {
 
         {/* Section 5: Beautiful Interactive filterable Gallery */}
         <Gallery />
-
-        {/* Section 6: Investor Strategic Advantages */}
-        <InvestorOpportunities />
 
         {/* Section 8: Standardized Contact Interface */}
         <ContactForm />

@@ -26,7 +26,6 @@ export default function Navbar({ activeSection }: NavbarProps) {
     { label: t("nav_products"), href: "#produtos" },
     { label: t("nav_impact"), href: "#sustentabilidade" },
     { label: t("nav_gallery"), href: "#galeria" },
-    { label: t("nav_investors"), href: "#investidores" },
     { label: t("nav_contact"), href: "#contacto" },
   ];
 

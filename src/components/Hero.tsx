@@ -175,7 +175,7 @@ export default function Hero() {
               className="px-8 py-4 bg-[#002016] text-[#A89558] border border-white/10 font-bold rounded-xl shadow-lg hover:bg-[#002016]/95 transition text-center"
               id="hero-cta-prime"
             >
-              {language === "pt" ? "Conheça o Projeto" : "Explore the Project"}
+              {language === "pt" ? "Conheça o Projecto" : "Explore the Project"}
             </a>
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-partner-modal"))}

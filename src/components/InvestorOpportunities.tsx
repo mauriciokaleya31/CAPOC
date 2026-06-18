@@ -70,7 +70,7 @@ export default function InvestorOpportunities() {
           </div>
           <div className="lg:col-span-5">
             <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
-              O projeto CAPOC constitui uma das mais seguras e escaláveis propostas agrícolas do mercado de Angola, unindo a força do agronegócio de palma à fomento de infra-estruturas nacionais e criação permanente de riqueza verde.
+              O projecto CAPOC constitui uma das mais seguras e escaláveis propostas agrícolas do mercado de Angola, unindo a força do agronegócio de palma à fomento de infra-estruturas nacionais e criação permanente de riqueza verde.
             </p>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function InvestorOpportunities() {
               Deseja receber a nossa Apresentação Institucional detalhada?
             </h3>
             <p className="mt-2 text-brand-200/90 font-light text-xs sm:text-sm leading-relaxed">
-              Disponibilizamos memorando de investimentos, demonstrações financeiras do projeto piloto e NDA corporativo padrão aos parceiros autorizados.
+              Disponibilizamos memorando de investimentos, demonstrações financeiras do projecto piloto e NDA corporativo padrão aos parceiros autorizados.
             </p>
           </div>
 

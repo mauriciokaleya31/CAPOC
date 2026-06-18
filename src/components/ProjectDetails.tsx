@@ -96,10 +96,10 @@ export default function ProjectDetails() {
             Modelo de Negócio
           </span>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-brand-950 tracking-tight">
-            As Duas Vertentes Estratégicas do Projeto
+            {t("proj_title")}
           </h2>
           <p className="mt-4 text-base text-slate-600 font-light leading-relaxed">
-            Estruturámos um ecossistema agro-industrial altamente tecnológico e sinérgico divido em duas componentes elementares que alimentam o progresso de Cabinda.
+            {t("proj_desc")}
           </p>
         </div>
 

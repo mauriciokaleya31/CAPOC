@@ -46,7 +46,7 @@ export default function Footer() {
             <div className="flex items-center space-x-3">
               <div className="relative w-20 h-20 flex items-center justify-center shrink-0">
                 <img
-                  src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-2.png"
+                  src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-3.png"
                   alt="CAPOC Logo"
                   className="w-full h-full object-contain shadow-md rounded-full bg-white/5 p-1 border border-white/10"
                   referrerPolicy="no-referrer"

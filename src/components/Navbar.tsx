@@ -97,24 +97,20 @@ export default function Navbar({ activeSection }: NavbarProps) {
           <a
             href="#hero-section"
             onClick={(e) => handleScrollTo(e, "#hero-section")}
-            className="flex items-center space-x-3 group focus:outline-none"
+            className="flex items-center group focus:outline-none"
             id="brand-logo-link"
           >
             <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shrink-0">
               <img
-                src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-2.png"
+                src={
+                  isScrolled
+                    ? "https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-2.png"
+                    : "https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-3.png"
+                }
                 alt="CAPOC Logo"
                 className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-            </div>
-            <div className="hidden sm:block">
-              <span className={`block font-display text-base font-extrabold tracking-tight leading-none ${isScrolled ? "text-[#002016]" : "text-white"}`}>
-                CAPOC
-              </span>
-              <span className="block text-[8px] font-mono tracking-widest text-[#A89558] uppercase mt-1">
-                Cabinda Palm Oil Corp
-              </span>
             </div>
           </a>
 

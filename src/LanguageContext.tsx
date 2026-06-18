@@ -12,8 +12,8 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   pt: {
     // Navbar
-    nav_about: "Sobre Nós",
-    nav_project: "O Projeto",
+    nav_about: "Sobre",
+    nav_project: "Projecto",
     nav_products: "Produtos",
     nav_impact: "Sustentabilidade",
     nav_gallery: "Galeria",

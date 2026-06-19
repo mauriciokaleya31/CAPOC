@@ -2,17 +2,27 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Sprout, Factory, CheckCircle2, TrendingUp, HelpCircle, 
-  BarChart3, Layers, Calendar, ChevronRight, Play, Info 
+  BarChart3, Layers, Calendar, ChevronRight, Play, Info,
+  Cpu, Droplets, Leaf, Award
 } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 // Import our physical existing images
 // @ts-ignore
 import facilityImg from "../assets/images/palm_oil_facility_1781810440230.jpg";
+// @ts-ignore
+import plantationImg from "../assets/images/cabinda_palm_plantation_1781810423032.jpg";
 
 export default function ProjectDetails() {
   const { t, language } = useLanguage();
   const [activeSegment, setActiveSegment] = useState<"agricola" | "industrial">("agricola");
   const [selectedChartPhase, setSelectedChartPhase] = useState<number>(3); // Year index: 1-2, 3, 5, 8
+  const [activeHotspot, setActiveHotspot] = useState<number>(0);
+
+  // Reset active hotspot when swapping segments to prevent out of bounds
+  const handleSegmentChange = (segment: "agricola" | "industrial") => {
+    setActiveSegment(segment);
+    setActiveHotspot(0);
+  };
 
   const agricolaData = {
     title: "Componente Agrícola",
@@ -107,7 +117,7 @@ export default function ProjectDetails() {
         <div className="flex justify-center mb-10">
           <div className="bg-white p-1 rounded-xl border border-slate-200 flex shadow-xs">
             <button
-              onClick={() => setActiveSegment("agricola")}
+              onClick={() => handleSegmentChange("agricola")}
               className={`flex items-center space-x-2 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeSegment === "agricola"
                   ? "bg-brand-750 text-white shadow-xs"
@@ -118,7 +128,7 @@ export default function ProjectDetails() {
               <span>Componente Agrícola</span>
             </button>
             <button
-              onClick={() => setActiveSegment("industrial")}
+              onClick={() => handleSegmentChange("industrial")}
               className={`flex items-center space-x-2 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeSegment === "industrial"
                   ? "bg-brand-750 text-white shadow-xs"
@@ -139,81 +149,276 @@ export default function ProjectDetails() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-white rounded-2xl border border-slate-200/80 p-8 sm:p-12 shadow-sm"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-[32px] border border-[#EBE6DD] p-6 sm:p-10 shadow-[0_4px_30px_rgba(0,0,0,0.015)]"
           >
-            {/* Left Info Stats and Titles */}
-            <div className="lg:col-span-5 space-y-6">
-              <div>
-                <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-brand-650">
-                  Infraestrutura CAPOC
-                </span>
-                <h3 className="font-display text-2xl font-extrabold text-brand-950 mt-1">
-                  {currentData.title}
-                </h3>
-                <p className="text-slate-500 text-xs sm:text-sm italic font-light mt-1.5">
-                  {currentData.subtitle}
-                </p>
+            {/* Left: Dynamic Visual Showcase Container with Hotspots */}
+            <div className="lg:col-span-6 flex flex-col justify-between">
+              <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-[24px] overflow-hidden group shadow-md border border-slate-200 bg-slate-900">
+                <img
+                  src={activeSegment === "agricola" ? plantationImg : facilityImg}
+                  alt={currentData.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+
+                {/* Hotspots Mapping */}
+                {(() => {
+                  const hotspots = activeSegment === "agricola" ? [
+                    {
+                      id: 0,
+                      top: "28%",
+                      left: "32%",
+                      title: language === "pt" ? "Estufas Científicas" : "Scientific Greenhouses",
+                      desc: language === "pt"
+                        ? "Viveiros climatizados com controlo térmico de humidade e sementes de alta genética."
+                        : "Climate-controlled greenhouses with advanced botanical humidity models."
+                    },
+                    {
+                      id: 1,
+                      top: "54%",
+                      left: "72%",
+                      title: language === "pt" ? "Reflorestamento Zero" : "Zero Deforestation",
+                      desc: language === "pt"
+                        ? "Afastamento estrito de bacias hídricas e conservação de florestas virgens intactas."
+                        : "Strict setbacks protecting river basins and conserving unique primary forests."
+                    },
+                    {
+                      id: 2,
+                      top: "75%",
+                      left: "45%",
+                      title: language === "pt" ? "Solos de Cabinda" : "Cabinda Organic Soils",
+                      desc: language === "pt"
+                        ? "Manejo responsável sem aditivos químicos para assegurar a pureza biológica original."
+                        : "Responsible ground management free of chemical fire clears."
+                    }
+                  ] : [
+                    {
+                      id: 0,
+                      top: "35%",
+                      left: "30%",
+                      title: language === "pt" ? "Prensagem Física" : "Physical Refinement",
+                      desc: language === "pt"
+                        ? "Extração mecânica limpa imediata por vapor e vácuo, sem solventes químicos."
+                        : "Immediate mechanical extraction under vacuum steam, 100% free of solvent residues."
+                    },
+                    {
+                      id: 1,
+                      top: "50%",
+                      left: "68%",
+                      title: language === "pt" ? "Turbinas de Biomassa" : "Biomass Generators",
+                      desc: language === "pt"
+                        ? "Eletricidade e vapor gerados 100% de carapaças secas, assegurando desperdício zero."
+                        : "Integrated thermal generators running fully on dry byproduct kernels."
+                    },
+                    {
+                      id: 2,
+                      top: "72%",
+                      left: "52%",
+                      title: language === "pt" ? "Sabão e Manteigas" : "Soap & Solid Butters",
+                      desc: language === "pt"
+                        ? "Saponificação de alta pureza e extração automatizada de margarinas minerais."
+                        : "Automated physical separation streams creating highly durable traditional blue soap."
+                    }
+                  ];
+
+                  return hotspots.map((spot) => {
+                    const isSelected = activeHotspot === spot.id;
+                    return (
+                      <button
+                        key={spot.id}
+                        onClick={() => setActiveHotspot(spot.id)}
+                        className="absolute w-8 h-8 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center cursor-pointer focus:outline-none transition-transform active:scale-95"
+                        style={{ top: spot.top, left: spot.left }}
+                        id={`hotspot-${activeSegment}-${spot.id}`}
+                      >
+                        {/* Glow animation */}
+                        <span className={`absolute inline-flex h-full w-full rounded-full transition-all duration-300 ${
+                          isSelected ? "bg-amber-400 opacity-60 animate-ping" : "bg-[#A89558] opacity-40 hover:bg-amber-400"
+                        }`} />
+                        {/* Solid center dot */}
+                        <span className={`relative rounded-full transition-all duration-300 shadow-md ${
+                          isSelected ? "h-4.5 w-4.5 bg-amber-400 border border-white" : "h-3.5 w-3.5 bg-[#A89558] hover:bg-amber-400 border border-white"
+                        }`} />
+                      </button>
+                    );
+                  });
+                })()}
+
+                {/* Floating Glass Highlight Banner */}
+                <div className="absolute top-4 left-4 bg-emerald-950/90 text-[#A89558] text-[9px] font-mono tracking-wider font-bold py-1.5 px-3.5 rounded-full border border-emerald-500/20 backdrop-blur-md shadow-sm z-20">
+                  {activeSegment === "agricola" ? "5.000 HECTARES PLANEADOS" : "PADRÃO ISO 22000 INTEGRADO"}
+                </div>
               </div>
 
-              {/* Stat Boxes */}
-              <div className="grid grid-cols-2 gap-4">
-                {currentData.stats.map((st, i) => (
-                  <div key={i} className="p-4 bg-slate-50 border border-slate-100 rounded-xl">
-                    <span className="block text-[10px] text-slate-500 font-medium uppercase tracking-wider">
-                      {st.label}
-                    </span>
-                    <span className="block text-base font-extrabold text-brand-900 tracking-tight mt-1">
-                      {st.val}
+              {/* Dynamic Information Display Box */}
+              {(() => {
+                const hotspots = activeSegment === "agricola" ? [
+                  {
+                    id: 0,
+                    title: language === "pt" ? "Estufas Científicas" : "Scientific Greenhouses",
+                    desc: language === "pt"
+                      ? "Viveiros climatizados com controlo térmico de humidade e sementes de alta genética."
+                      : "Climate-controlled greenhouses with advanced botanical humidity models."
+                  },
+                  {
+                    id: 1,
+                    title: language === "pt" ? "Reflorestamento Zero" : "Zero Deforestation",
+                    desc: language === "pt"
+                      ? "Afastamento estrito de bacias hídricas e conservação de florestas virgens intactas."
+                      : "Strict setbacks protecting river basins and conserving unique primary forests."
+                  },
+                  {
+                    id: 2,
+                    title: language === "pt" ? "Solos de Cabinda" : "Cabinda Organic Soils",
+                    desc: language === "pt"
+                      ? "Manejo responsável sem aditivos químicos para assegurar a pureza biológica original."
+                      : "Responsible ground management free of chemical fire clears."
+                  }
+                ] : [
+                  {
+                    id: 0,
+                    title: language === "pt" ? "Prensagem Física" : "Physical Refinement",
+                    desc: language === "pt"
+                      ? "Extração mecânica limpa imediata por vapor e vácuo, sem solventes químicos."
+                      : "Immediate mechanical extraction under vacuum steam, 100% free of solvent residues."
+                  },
+                  {
+                    id: 1,
+                    title: language === "pt" ? "Turbinas de Biomassa" : "Biomass Generators",
+                    desc: language === "pt"
+                      ? "Eletricidade e vapor gerados 100% de carapaças secas, assegurando desperdício zero."
+                      : "Integrated thermal generators running fully on dry byproduct kernels."
+                  },
+                  {
+                    id: 2,
+                    title: language === "pt" ? "Sabão e Manteigas" : "Soap & Solid Butters",
+                    desc: language === "pt"
+                      ? "Saponificação de alta pureza e extração automatizada de margarinas minerais."
+                      : "Automated physical separation streams creating highly durable traditional blue soap."
+                  }
+                ];
+
+                const currentSpot = hotspots[activeHotspot] || hotspots[0];
+
+                return (
+                  <div className="mt-4 p-5 bg-[#FAF9F5] border border-[#D4C3A3]/30 rounded-[20px] transition-all duration-300 shadow-2xs">
+                    <div className="flex items-center space-x-2 text-emerald-800">
+                      <CheckCircle2 className="w-4 h-4 text-[#A89558]" />
+                      <span className="font-display font-extrabold text-[#002016] text-xs sm:text-sm uppercase tracking-wider">
+                        {currentSpot.title}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-slate-600 text-xs sm:text-sm font-light leading-relaxed">
+                      {currentSpot.desc}
+                    </p>
+                    <span className="mt-3 inline-block font-mono text-[9px] text-amber-800 bg-amber-500/[0.08] px-2.5 py-1 rounded">
+                      {language === "pt"
+                        ? "💡 Clique nos pontos brilhantes acima para mudar de tópico"
+                        : "💡 Click the glowing status dots above to explore details"}
                     </span>
                   </div>
-                ))}
-              </div>
-
-              {/* Progress Level */}
-              <div className="pt-4 border-t border-slate-100">
-                <span className="text-xs font-bold text-slate-700 block mb-2">
-                  Grau Operacional da Matriz
-                </span>
-                <div className="w-full bg-slate-100 rounded-full h-2">
-                  <div 
-                    className="bg-brand-700 h-2 rounded-full transition-all duration-700" 
-                    style={{ width: activeSegment === "agricola" ? "80%" : "60%" }}
-                  />
-                </div>
-                <div className="flex justify-between text-[10px] text-slate-500 mt-1.5 font-mono">
-                  <span>Início</span>
-                  <span className="text-brand-750 font-bold">
-                    {activeSegment === "agricola" ? "Fase Ativa de Cultivo" : "Implementação de Caldeira"}
-                  </span>
-                  <span>Escala Civil</span>
-                </div>
-              </div>
+                );
+              })()}
             </div>
 
-            {/* Right bullet points and highlights */}
-            <div className="lg:col-span-7 flex flex-col justify-between">
+            {/* Right: Rich Interactive Specifications Info Panel */}
+            <div className="lg:col-span-6 flex flex-col justify-between space-y-6 lg:space-y-0 text-left">
               <div className="space-y-4">
-                <h4 className="font-display font-bold text-slate-900 text-base flex items-center">
-                  <span className="w-2.5 h-2.5 rounded-full bg-brand-500 mr-2 shrink-0 animate-pulse" />
-                  Operações e Processamento de Excelência
-                </h4>
-                <ul className="space-y-3">
-                  {currentData.bullets.map((b, i) => (
-                    <li key={i} className="flex space-x-3 items-start text-sm text-slate-600 font-light leading-relaxed">
-                      <CheckCircle2 className="w-4 h-4 text-brand-650 shrink-0 mt-0.5" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-[#A89558] bg-[#FAF7F0] border border-[#D4C3A3]/30 px-3.5 py-1 rounded-md inline-block">
+                    Infraestrutura CAPOC
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-[#002016] mt-2.5 leading-snug">
+                    {currentData.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs sm:text-sm italic font-light mt-1">
+                    {currentData.subtitle}
+                  </p>
+                </div>
+
+                {/* Grid of Mini-Feature Cards to make it visually rich but clean */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  {activeSegment === "agricola" ? (
+                    <>
+                      <div className="p-4 rounded-xl border border-slate-100 bg-[#FAF9F5]/40 hover:border-emerald-800/10 transition-all">
+                        <div className="p-2 bg-emerald-50 text-emerald-800 rounded-lg w-fit mb-3">
+                          <Leaf className="w-4 h-4" />
+                        </div>
+                        <h4 className="font-display font-bold text-xs sm:text-sm text-[#002016]">Fomento Integrado</h4>
+                        <p className="mt-1 text-slate-500 text-xs font-light leading-relaxed">Fomento sustentável com pequenos produtores para robustecer a colheita em Cabinda.</p>
+                      </div>
+                      <div className="p-4 rounded-xl border border-slate-100 bg-[#FAF9F5]/40 hover:border-emerald-800/10 transition-all">
+                        <div className="p-2 bg-emerald-50 text-emerald-800 rounded-lg w-fit mb-3">
+                          <Sprout className="w-4 h-4" />
+                        </div>
+                        <h4 className="font-display font-bold text-xs sm:text-sm text-[#002016]">Gestão Botânica</h4>
+                        <p className="mt-1 text-slate-500 text-xs font-light leading-relaxed">Colheita manual e logística eficiente de descarga que garante zero oxidação da fruta.</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="p-4 rounded-xl border border-slate-100 bg-[#FAF9F5]/40 hover:border-emerald-800/10 transition-all">
+                        <div className="p-2 bg-emerald-50 text-emerald-800 rounded-lg w-fit mb-3">
+                          <Award className="w-4 h-4" />
+                        </div>
+                        <h4 className="font-display font-bold text-xs sm:text-sm text-[#002016]">Complexo Avançado</h4>
+                        <p className="mt-1 text-slate-500 text-xs font-light leading-relaxed">A maior planta integrada de refinação física moderna da África Central.</p>
+                      </div>
+                      <div className="p-4 rounded-xl border border-slate-100 bg-[#FAF9F5]/40 hover:border-emerald-800/10 transition-all">
+                        <div className="p-2 bg-emerald-50 text-emerald-800 rounded-lg w-fit mb-3">
+                          <Cpu className="w-4 h-4" />
+                        </div>
+                        <h4 className="font-display font-bold text-xs sm:text-sm text-[#002016]">Padronização Global</h4>
+                        <p className="mt-1 text-slate-500 text-xs font-light leading-relaxed">Processamento refinado estrito alinhado às diretrizes de controle químico internacionais.</p>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Progress Level bar */}
+                <div className="pt-4 border-t border-slate-100">
+                  <span className="text-xs font-bold text-[#002016] block mb-2">
+                    Grau Operacional da Matriz
+                  </span>
+                  <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div 
+                      className="bg-emerald-800 h-2 rounded-full transition-all duration-700" 
+                      style={{ width: activeSegment === "agricola" ? "80%" : "60%" }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] text-slate-500 mt-1.5 font-mono">
+                    <span>Início</span>
+                    <span className="text-emerald-800 font-bold">
+                      {activeSegment === "agricola" ? "Fase Ativa de Cultivo" : "Prensagem & Caldeiras"}
+                    </span>
+                    <span>100%</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Tags panel */}
-              <div className="flex flex-wrap gap-2 pt-6 mt-6 border-t border-slate-100">
-                {currentData.highlights.map((tag, id) => (
-                  <span key={id} className="text-[10px] uppercase tracking-wide font-bold bg-brand-50 text-brand-750 border border-brand-100 px-3 py-1 rounded-full">
-                    #{tag}
-                  </span>
-                ))}
+              {/* Stats Box list row & tags box */}
+              <div className="space-y-4 pt-4 border-t border-slate-100">
+                <div className="grid grid-cols-2 gap-4">
+                  {currentData.stats.map((st, i) => (
+                    <div key={i} className="px-4 py-3 bg-[#FAF7F0]/40 border border-[#FAF6ED] rounded-xl flex flex-col justify-center">
+                      <span className="text-[9px] text-[#A89558] font-bold uppercase tracking-wider block">
+                        {st.label}
+                      </span>
+                      <span className="text-sm font-extrabold text-[#002016] tracking-tight mt-0.5">
+                        {st.val}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {currentData.highlights.map((tag, id) => (
+                    <span key={id} className="text-[9px] uppercase tracking-wide font-bold bg-[#FAF7F0] text-emerald-800 border border-[#D4C3A3]/20 px-2.5 py-1 rounded-md">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

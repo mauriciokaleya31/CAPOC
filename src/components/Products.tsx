@@ -547,57 +547,56 @@ export default function Products() {
             <motion.div
               key={prod.id}
               whileHover={{ y: -8 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-emerald-500 shadow-md hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-300 flex flex-col justify-between h-full group"
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-[32px] border border-[#EBE6DD] hover:border-emerald-800 transition-all duration-500 flex flex-col justify-between h-full group shadow-[0_4px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_30px_60px_rgba(0,32,22,0.06)] p-6"
               id={`prod-card-${prod.id}`}
             >
               <div>
-                {/* Premium Aspect Ratio Image Container with soft, crisp light background and nice green accents */}
-                <div className="relative h-72 w-full flex items-center justify-center p-6 bg-gradient-to-br from-[#FAFAF7] via-emerald-50/20 to-white overflow-hidden border-b-2 border-emerald-600/30 transition-colors duration-300 group-hover:border-emerald-500">
-                  {/* Subtle green aura glowing on card hover */}
-                  <div className="absolute w-48 h-48 bg-emerald-500/5 rounded-full scale-90 blur-2xl group-hover:scale-110 group-hover:bg-emerald-500/10 transition-all duration-500 ease-out pointer-events-none" />
+                {/* Visual Image Container - beautiful soft vignette display plate with premium warm background and glowing aura */}
+                <div className="relative h-72 w-full flex items-center justify-center p-8 bg-gradient-to-b from-[#FFFDF9] via-[#FAF7F1] to-[#EFEADA] rounded-[24px] overflow-hidden transition-all duration-500 border border-[#D4C3A3]/35 group-hover:border-emerald-800/20">
                   
-                  {/* Product PNG image - beautifully contrasted and adjusted to fill properly */}
+                  {/* Subtle brand palm organic leaf background overlay */}
+                  <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-[0.08] pointer-events-none" style={{ backgroundImage: `url('https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.43.jpeg')` }} />
+                  
+                  {/* Elegant premium emerald glowing aura behind product */}
+                  <div className="absolute w-48 h-48 bg-emerald-600/[0.08] rounded-full blur-2xl group-hover:scale-135 transition-transform duration-700 pointer-events-none" />
+                  
+                  {/* Product PNG image - beautifully showcased with rich natural colors preserved */}
                   <img
                     src={prod.imageUrl}
                     alt={tField(prod.name)}
-                    className="h-full w-full object-contain relative z-10 pointer-events-none select-none transition-all duration-500 ease-out group-hover:scale-[1.03]"
+                    className="h-full w-auto object-contain relative z-10 pointer-events-none select-none transition-all duration-500 ease-out group-hover:scale-105 filter drop-shadow-[0_16px_32px_rgba(4,47,31,0.15)]"
                     referrerPolicy="no-referrer"
                   />
-
-                  {/* Top-Right Badge - with green touch */}
-                  <span className="absolute top-4 right-4 bg-emerald-950 text-emerald-400 text-[9px] font-mono tracking-wider font-bold uppercase py-1 px-3 rounded-full border border-emerald-500/30 shadow-sm z-20">
-                    {tField(prod.badge)}
-                  </span>
                 </div>
 
                 {/* Text Metadata Panel */}
-                <div className="p-6 sm:p-7">
-                  <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-[#A89558] bg-[#A89558]/10 py-1 px-2.5 rounded-md inline-block mb-3">
+                <div className="px-1 py-5">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#A89558] bg-[#FAF7F0] border border-[#D4C3A3]/30 py-1 px-3 rounded-md inline-block mb-3.5">
                     {tField(prod.category)}
                   </span>
-                  <h3 className="font-display text-xl font-bold text-[#002016] tracking-tight group-hover:text-[#A89558] transition-colors duration-200 leading-snug">
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-[#002016] tracking-tight group-hover:text-emerald-800 transition-colors duration-300 leading-snug">
                     {tField(prod.name)}
                   </h3>
-                  <p className="mt-3 text-sm text-slate-500 font-light leading-relaxed">
+                  <p className="mt-3 text-sm text-slate-600 font-light leading-relaxed min-h-[72px]">
                     {tField(prod.shortDesc)}
                   </p>
                 </div>
               </div>
 
               {/* Bottom Card Controls Section */}
-              <div className="px-6 pb-6 pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
-                <span className="text-[9px] uppercase font-mono font-bold tracking-wider text-slate-400">
+              <div className="px-1 pt-5 border-t border-slate-100 flex items-center justify-between mt-auto">
+                <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-emerald-800/60">
                   {tField(labels.brand_purity)}
                 </span>
                 <button
                   type="button"
                   onClick={() => setSelectedProduct(prod)}
-                  className="inline-flex items-center space-x-1.5 px-4.5 py-2.5 bg-[#002016] text-[#A89558] hover:text-white hover:bg-[#002419] font-bold rounded-xl text-xs tracking-wide transition shadow-sm hover:shadow-lg focus:outline-none"
+                  className="inline-flex items-center space-x-1.5 px-5 py-3 bg-[#002016] text-[#A89558] hover:text-white hover:bg-emerald-950 font-bold rounded-xl text-xs tracking-wide transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none cursor-pointer"
                   id={`btn-saiba-mais-${prod.id}`}
                 >
                   <span>{tField(labels.btn_details)}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             </motion.div>

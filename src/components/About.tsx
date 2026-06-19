@@ -1,8 +1,5 @@
 import { motion } from "motion/react";
-import { 
-  ShieldCheck, Award, Leaf, Lightbulb, Handshake, Heart, 
-  Target, Eye, Compass, Cpu, TrendingUp, Users, Factory, Sparkles, Sprout
-} from "lucide-react";
+import { ShieldCheck, Target, Eye } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 
 export default function About() {
@@ -13,45 +10,6 @@ export default function About() {
     { value: "35.000", suffix: language === "pt" ? "Ton/Ano" : "Tons/Yr", label: t("about_metric_cap") },
     { value: "6", suffix: language === "pt" ? "Produtos" : "Products", label: language === "pt" ? "Gama de Linhas Ativas" : "Active Lines range" },
     { value: "Centenas", suffix: language === "pt" ? "de Empregos" : "of Jobs", label: t("about_metric_jobs") },
-  ];
-
-  const quemSomosCards = [
-    {
-      title: "Inovação Tecnológica",
-      desc: "Automação no processamento industrial, viveiros climatizados e controle laboratorial contínuo.",
-      icon: <Cpu className="w-6 h-6 text-emerald-600" />,
-      bg: "bg-emerald-50/50 border-emerald-100",
-    },
-    {
-      title: "Sustentabilidade Ambiental",
-      desc: "Protocolos rigorosos de desflorestação zero, conservação de bacias hídricas e uso de energia limpa.",
-      icon: <Leaf className="w-6 h-6 text-green-600" />,
-      bg: "bg-green-50/50 border-green-100",
-    },
-    {
-      title: "Desenvolvimento Económico",
-      desc: "Fortalecimento do mercado interno angolano, geração de valor tributário e diversificação produtiva.",
-      icon: <TrendingUp className="w-6 h-6 text-amber-600" />,
-      bg: "bg-amber-50/50 border-amber-100",
-    },
-    {
-      title: "Impacto Social",
-      desc: "Apoio ativo à educação regional, saneamento comunitário e formação de mão de obra de Cabinda.",
-      icon: <Users className="w-6 h-6 text-blue-600" />,
-      bg: "bg-blue-50/50 border-blue-100",
-    },
-    {
-      title: "Industrialização Nacional",
-      desc: "Instalação da maior planta refinadora física moderna integrada da África Central.",
-      icon: <Factory className="w-6 h-6 text-indigo-600" />,
-      bg: "bg-indigo-50/50 border-indigo-100",
-    },
-    {
-      title: "Criação de Valor",
-      desc: "Transformar solo fértil em autossuficiência de bens de consumo diário para toda a nação.",
-      icon: <Sparkles className="w-6 h-6 text-rose-600" />,
-      bg: "bg-rose-50/50 border-rose-100",
-    },
   ];
 
   const valoresList = [
@@ -100,7 +58,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: Beautiful lateral frame image */}
           {/* Right: Beautiful multi-image collage for a premium feel with lots of photos */}
           <div className="lg:col-span-5 space-y-4">
             <motion.div 
@@ -169,56 +126,13 @@ export default function About() {
           </div>
         </div>
 
-        {/* ================= SECTION 4: QUEM SOMOS ================= */}
-        <div className="mb-24 pt-12 border-t border-slate-100">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-brand-700 bg-brand-100 px-3 py-1 rounded-full">
-              Quem Somos
-            </span>
-            <h3 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-brand-950">
-              Liderança, Tecnologia e Foco Agro-Industrial
-            </h3>
-            <p className="mt-3 text-slate-600 text-sm sm:text-base font-light leading-relaxed">
-              Consolidamos o nosso pioneirismo através de seis pilares de atuação integrados, garantindo eficiência de ponta a ponta, desde a semente até ao consumidor final em Angola.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {quemSomosCards.map((card, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.15 }}
-                className={`p-6 rounded-2xl border ${card.bg} transition-all duration-300 h-full flex flex-col justify-between`}
-                id={`qs-card-${idx}`}
-              >
-                <div>
-                  <div className="p-3 bg-white rounded-xl shadow-xs border border-slate-100 w-fit mb-5">
-                    {card.icon}
-                  </div>
-                  <h4 className="font-display font-bold text-brand-950 text-base">
-                    {card.title}
-                  </h4>
-                  <p className="mt-2.5 text-slate-600 text-xs sm:text-sm font-light leading-relaxed">
-                    {card.desc}
-                  </p>
-                </div>
-                <div className="mt-6 flex items-center text-[10px] font-mono font-bold uppercase tracking-wider text-brand-600">
-                  <Compass className="w-3.5 h-3.5 mr-1" />
-                  <span>Excelência CAPOC</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
         {/* ================= SECTION 5: MISSÃO, VISÃO E VALORES ================= */}
-        <div className="pt-12 border-t border-slate-100">
+        <div className="pt-16 border-t border-slate-100">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-brand-700 bg-brand-100 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#A89558] bg-[#002016]/5 px-3.5 py-1.5 rounded-full inline-block border border-[#A89558]/20">
               Pilares Fundamentais
             </span>
-            <h3 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-brand-950">
+            <h3 className="mt-4 font-display text-2xl sm:text-3xl font-extrabold text-[#002016] tracking-tight">
               Propósito e Filosofia Corporativa
             </h3>
           </div>
@@ -226,63 +140,63 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Missão */}
-            <div className="bg-slate-50 border border-slate-200/60 p-8 rounded-2xl flex flex-col justify-between" id="block-missao">
+            <div className="bg-white border border-[#EBE6DD] hover:border-emerald-800 p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(0,32,22,0.05)] group" id="block-missao">
               <div>
-                <div className="p-3 bg-emerald-100/75 text-emerald-900 rounded-xl w-fit mb-6">
+                <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl w-fit mb-6 border border-emerald-800/10 transition-colors group-hover:bg-emerald-100 shadow-xs">
                   <Target className="w-6 h-6" />
                 </div>
-                <h4 className="font-display font-extrabold text-brand-950 text-lg uppercase tracking-wider">
+                <h4 className="font-display font-bold text-[#002016] text-lg uppercase tracking-wider">
                   A Nossa Missão
                 </h4>
-                <p className="mt-4 text-slate-700 text-sm font-light leading-relaxed">
+                <p className="mt-4 text-slate-600 text-sm font-light leading-relaxed">
                   Produzir e transformar óleo de palma Angolano e seus derivados imediatos com elevados padrões de qualidade, eficiência técnica e sustentabilidade, contribuindo directamente para o desenvolvimento industrial competitivo de Angola.
                 </p>
               </div>
-              <div className="mt-8 text-[11px] font-mono uppercase tracking-wider text-emerald-700 border-t border-slate-200/60 pt-4 font-bold">
+              <div className="mt-8 text-[10px] font-mono uppercase tracking-wider text-emerald-800/60 border-t border-slate-100 pt-4 font-bold">
                 Cultivar com Ética
               </div>
             </div>
 
             {/* Visão */}
-            <div className="bg-slate-50 border border-slate-200/60 p-8 rounded-2xl flex flex-col justify-between" id="block-visao">
+            <div className="bg-white border border-[#EBE6DD] hover:border-emerald-800 p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(0,32,22,0.05)] group" id="block-visao">
               <div>
-                <div className="p-3 bg-amber-100/75 text-amber-900 rounded-xl w-fit mb-6">
+                <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl w-fit mb-6 border border-emerald-800/10 transition-colors group-hover:bg-emerald-100 shadow-xs">
                   <Eye className="w-6 h-6" />
                 </div>
-                <h4 className="font-display font-extrabold text-brand-950 text-lg uppercase tracking-wider">
+                <h4 className="font-display font-bold text-[#002016] text-lg uppercase tracking-wider">
                   A Nossa Visão
                 </h4>
-                <p className="mt-4 text-slate-700 text-sm font-light leading-relaxed">
+                <p className="mt-4 text-slate-600 text-sm font-light leading-relaxed">
                   Ser referência nacional e regional na indústria de óleo de palma. Aspiramos posicionar a Província de Cabinda no topo de qualidade agro-industrial africana, conquistando respeito comercial e fidelização.
                 </p>
               </div>
-              <div className="mt-8 text-[11px] font-mono uppercase tracking-wider text-amber-700 border-t border-slate-200/60 pt-4 font-bold">
+              <div className="mt-8 text-[10px] font-mono uppercase tracking-wider text-emerald-800/60 border-t border-slate-100 pt-4 font-bold">
                 Inovar Sempre
               </div>
             </div>
 
             {/* Valores */}
-            <div className="bg-brand-900 text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg shadow-brand-900/10" id="block-valores">
+            <div className="bg-white border border-[#EBE6DD] hover:border-emerald-800 p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(0,32,22,0.05)] group" id="block-valores">
               <div>
-                <div className="p-3 bg-brand-800 text-brand-300 rounded-xl w-fit mb-6">
-                  <ShieldCheck className="w-6 h-6" />
+                <div className="p-3 bg-[#FAF7F0] border border-[#D4C3A3]/25 text-emerald-800 rounded-xl w-fit mb-6 shadow-xs">
+                  <ShieldCheck className="w-6 h-6 text-[#A89558]" />
                 </div>
-                <h4 className="font-display font-extrabold text-white text-lg uppercase tracking-wider">
+                <h4 className="font-display font-bold text-[#002016] text-lg uppercase tracking-wider">
                   Nossos Valores
                 </h4>
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   {valoresList.map((val, id) => (
-                    <div key={id} className="flex items-center space-x-1.5 text-xs text-brand-200 font-light">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-400" />
+                    <div key={id} className="flex items-center space-x-1.5 text-xs text-slate-600 font-semibold animate-none">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                       <span>{val}</span>
                     </div>
                   ))}
                 </div>
-                <p className="mt-4 text-brand-200/90 text-xs font-light leading-relaxed">
+                <p className="mt-4 text-slate-500 text-xs font-light leading-relaxed">
                   O nosso código operacional rege-se pelo desenvolvimento humano recíproco e integridade extrema em todos os contratos com parceiros e investidores.
                 </p>
               </div>
-              <div className="mt-6 text-[11px] font-mono uppercase tracking-wider text-brand-450 border-t border-brand-800 pt-4 font-bold">
+              <div className="mt-6 text-[10px] font-mono uppercase tracking-wider text-emerald-800/60 border-t border-slate-100 pt-4 font-bold">
                 CAPOC Standard
               </div>
             </div>

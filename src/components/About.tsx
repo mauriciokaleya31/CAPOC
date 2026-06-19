@@ -36,7 +36,7 @@ export default function About() {
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-brand-950 tracking-tight leading-tight">
               {t("about_title")}
             </h2>
-            <p className="text-slate-700 text-base sm:text-lg font-light leading-relaxed">
+            <p className="text-slate-700 text-base sm:text-lg font-light leading-relaxed whitespace-pre-line">
               {t("about_desc")}
             </p>
 
@@ -127,79 +127,114 @@ export default function About() {
         </div>
 
         {/* ================= SECTION 5: MISSÃO, VISÃO E VALORES ================= */}
-        <div className="pt-16 border-t border-slate-100">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#A89558] bg-[#002016]/5 px-3.5 py-1.5 rounded-full inline-block border border-[#A89558]/20">
+        <div className="pt-24 border-t border-slate-100">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#A89558] bg-[#002016]/5 px-4 py-1.5 rounded-full inline-block border border-[#A89558]/20 shadow-xs">
               Pilares Fundamentais
             </span>
-            <h3 className="mt-4 font-display text-2xl sm:text-3xl font-extrabold text-[#002016] tracking-tight">
+            <h3 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#002016] tracking-tight">
               Propósito e Filosofia Corporativa
             </h3>
+            <p className="mt-4 text-slate-500 font-light text-sm sm:text-base leading-relaxed">
+              Guiados pelo desenvolvimento, sustentabilidade e integridade extrema para erguer a infraestrutura agro-industrial do amanhã em Angola.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
-            {/* Missão */}
-            <div className="bg-white border border-[#EBE6DD] hover:border-emerald-800 p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(0,32,22,0.05)] group" id="block-missao">
+            {/* Missão Card */}
+            <motion.div 
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-gradient-to-b from-[#002016] to-[#013022] text-[#FAF9F5] p-8 sm:p-10 rounded-[32px] border border-[#A89558]/25 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_30px_rgba(0,32,22,0.03)] group"
+              id="block-missao"
+            >
               <div>
-                <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl w-fit mb-6 border border-emerald-800/10 transition-colors group-hover:bg-emerald-100 shadow-xs">
+                <div className="p-3.5 bg-[#A89558]/10 text-[#A89558] rounded-2xl w-fit mb-8 border border-[#A89558]/35 transition-transform duration-300 group-hover:scale-105">
                   <Target className="w-6 h-6" />
                 </div>
-                <h4 className="font-display font-bold text-[#002016] text-lg uppercase tracking-wider">
+                <div className="inline-block px-2.5 py-0.5 rounded-md bg-[#A89558]/10 border border-[#A89558]/25 text-[10px] text-[#A89558] uppercase font-mono tracking-wider mb-2 font-bold">
+                  Propósito
+                </div>
+                <h4 className="font-display font-bold text-xl uppercase tracking-wider text-[#EAE6DD]">
                   A Nossa Missão
                 </h4>
-                <p className="mt-4 text-slate-600 text-sm font-light leading-relaxed">
+                <p className="mt-4 text-emerald-100/80 text-sm font-light leading-relaxed">
                   Produzir e transformar óleo de palma Angolano e seus derivados imediatos com elevados padrões de qualidade, eficiência técnica e sustentabilidade, contribuindo directamente para o desenvolvimento industrial competitivo de Angola.
                 </p>
               </div>
-              <div className="mt-8 text-[10px] font-mono uppercase tracking-wider text-emerald-800/60 border-t border-slate-100 pt-4 font-bold">
-                Cultivar com Ética
+              <div className="mt-12 text-[10px] font-mono uppercase tracking-wider text-[#A89558] border-t border-[#A89558]/15 pt-4 font-bold flex items-center justify-between">
+                <span>Cultivar com Ética</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#A89558]" />
               </div>
-            </div>
+            </motion.div>
 
-            {/* Visão */}
-            <div className="bg-white border border-[#EBE6DD] hover:border-emerald-800 p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(0,32,22,0.05)] group" id="block-visao">
+            {/* Visão Card */}
+            <motion.div 
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-gradient-to-b from-[#002016] to-[#013022] text-[#FAF9F5] p-8 sm:p-10 rounded-[32px] border border-[#A89558]/25 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_30px_rgba(0,32,22,0.03)] group"
+              id="block-visao"
+            >
               <div>
-                <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl w-fit mb-6 border border-emerald-800/10 transition-colors group-hover:bg-emerald-100 shadow-xs">
+                <div className="p-3.5 bg-[#A89558]/10 text-[#A89558] rounded-2xl w-fit mb-8 border border-[#A89558]/35 transition-transform duration-300 group-hover:scale-105">
                   <Eye className="w-6 h-6" />
                 </div>
-                <h4 className="font-display font-bold text-[#002016] text-lg uppercase tracking-wider">
+                <div className="inline-block px-2.5 py-0.5 rounded-md bg-[#A89558]/10 border border-[#A89558]/25 text-[10px] text-[#A89558] uppercase font-mono tracking-wider mb-2 font-bold">
+                  Futuro
+                </div>
+                <h4 className="font-display font-bold text-xl uppercase tracking-wider text-[#EAE6DD]">
                   A Nossa Visão
                 </h4>
-                <p className="mt-4 text-slate-600 text-sm font-light leading-relaxed">
+                <p className="mt-4 text-emerald-100/80 text-sm font-light leading-relaxed">
                   Ser referência nacional e regional na indústria de óleo de palma. Aspiramos posicionar a Província de Cabinda no topo de qualidade agro-industrial africana, conquistando respeito comercial e fidelização.
                 </p>
               </div>
-              <div className="mt-8 text-[10px] font-mono uppercase tracking-wider text-emerald-800/60 border-t border-slate-100 pt-4 font-bold">
-                Inovar Sempre
+              <div className="mt-12 text-[10px] font-mono uppercase tracking-wider text-[#A89558] border-t border-[#A89558]/15 pt-4 font-bold flex items-center justify-between">
+                <span>Inovar Sempre</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#A89558]" />
               </div>
-            </div>
+            </motion.div>
 
-            {/* Valores */}
-            <div className="bg-white border border-[#EBE6DD] hover:border-emerald-800 p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(0,32,22,0.05)] group" id="block-valores">
+            {/* Valores Card */}
+            <motion.div 
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-gradient-to-b from-[#002016] to-[#013022] text-[#FAF9F5] p-8 sm:p-10 rounded-[32px] border border-[#A89558]/25 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_30px_rgba(0,32,22,0.03)] group"
+              id="block-valores"
+            >
               <div>
-                <div className="p-3 bg-[#FAF7F0] border border-[#D4C3A3]/25 text-emerald-800 rounded-xl w-fit mb-6 shadow-xs">
-                  <ShieldCheck className="w-6 h-6 text-[#A89558]" />
+                <div className="p-3.5 bg-[#A89558]/10 text-[#A89558] rounded-2xl w-fit mb-8 border border-[#A89558]/35 transition-transform duration-300 group-hover:scale-105">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h4 className="font-display font-bold text-[#002016] text-lg uppercase tracking-wider">
+                <div className="inline-block px-2.5 py-0.5 rounded-md bg-[#A89558]/10 border border-[#A89558]/25 text-[10px] text-[#A89558] uppercase font-mono tracking-wider mb-2 font-bold">
+                  Valores
+                </div>
+                <h4 className="font-display font-bold text-xl uppercase tracking-wider text-[#EAE6DD]">
                   Nossos Valores
                 </h4>
-                <div className="mt-4 grid grid-cols-2 gap-3">
+                
+                {/* Visual grid of modern values */}
+                <div className="mt-5 grid grid-cols-2 gap-2">
                   {valoresList.map((val, id) => (
-                    <div key={id} className="flex items-center space-x-1.5 text-xs text-slate-600 font-semibold animate-none">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                      <span>{val}</span>
+                    <div 
+                      key={id} 
+                      className="px-3 py-2 bg-emerald-950/40 border border-[#A89558]/15 rounded-xl flex items-center space-x-2 text-xs font-medium text-emerald-100 hover:bg-[#A89558]/10 hover:border-[#A89558]/30 transition-colors duration-200"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#A89558] shrink-0" />
+                      <span className="truncate">{val}</span>
                     </div>
                   ))}
                 </div>
-                <p className="mt-4 text-slate-500 text-xs font-light leading-relaxed">
+                <p className="mt-5 text-emerald-100/70 text-xs font-light leading-relaxed">
                   O nosso código operacional rege-se pelo desenvolvimento humano recíproco e integridade extrema em todos os contratos com parceiros e investidores.
                 </p>
               </div>
-              <div className="mt-6 text-[10px] font-mono uppercase tracking-wider text-emerald-800/60 border-t border-slate-100 pt-4 font-bold">
-                CAPOC Standard
+              <div className="mt-8 text-[10px] font-mono uppercase tracking-wider text-[#A89558] border-t border-[#A89558]/15 pt-4 font-bold flex items-center justify-between">
+                <span>CAPOC Standard</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#A89558]" />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

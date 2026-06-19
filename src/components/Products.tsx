@@ -20,11 +20,19 @@ interface Product {
 export default function Products() {
   const { language } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
   // Helper to translate content fields
   const tField = (obj: Record<string, string>) => {
     return obj[language] || obj["pt"] || "";
   };
+
+  const categoriesList = [
+    { id: "all", label: { pt: "Todos os Produtos", en: "All Products", fr: "Tous les Produits", es: "Todos los Productos", zh: "全部产品", ar: "جميع المنتجات" } },
+    { id: "alimentar", label: { pt: "Alimentar", en: "Food Grade", fr: "Alimentaire", es: "Alimentation", zh: "食品级", ar: "غذائي" } },
+    { id: "industrial", label: { pt: "Industrial & Cosmética", en: "Industrial & Cosmetics", fr: "Industriel & Cosmétique", es: "Industrial y Cosmética", zh: "工业与化妆品", ar: "صناعي وتجميلي" } },
+    { id: "higiene", label: { pt: "Limpeza & Higiene", en: "Cleaning & Care", fr: "Nettoyage & Soins", es: "Limpieza y Cuidado", zh: "洗护重清洗", ar: "العناية والنظافة" } },
+  ];
 
   const productList: Product[] = [
     {
@@ -519,8 +527,18 @@ export default function Products() {
     }
   };
 
+  const filteredProducts = productList.filter((prod) => {
+    if (activeCategory === "all") return true;
+    if (activeCategory === "alimentar") return prod.category.pt === "Alimentar";
+    if (activeCategory === "industrial") return prod.category.pt === "Industrial & Cosmética";
+    if (activeCategory === "higiene") {
+      return prod.category.pt === "Limpeza & Saneamento" || prod.category.pt === "Higiene Personal";
+    }
+    return true;
+  });
+
   return (
-    <section className="py-24 bg-[#FAF9F5] border-y border-[#A89558]/15 relative" id="produtos">
+    <section className="py-24 bg-[#FAF9F5] border-y border-[#A89558]/15 relative scroll-mt-20" id="produtos">
       {/* Decorative organic vector elements in background to look gorgeous */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#002016]/3 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#A89558]/5 rounded-full blur-3xl pointer-events-none" />
@@ -541,67 +559,119 @@ export default function Products() {
           </p>
         </div>
 
-        {/* Products Grid with magnificent animated borders and images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productList.map((prod) => (
-            <motion.div
-              key={prod.id}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white rounded-[32px] border border-[#EBE6DD] hover:border-emerald-800 transition-all duration-500 flex flex-col justify-between h-full group shadow-[0_4px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_30px_60px_rgba(0,32,22,0.06)] p-6"
-              id={`prod-card-${prod.id}`}
-            >
-              <div>
-                {/* Visual Image Container - beautiful soft vignette display plate with premium warm background and glowing aura */}
-                <div className="relative h-72 w-full flex items-center justify-center p-8 bg-gradient-to-b from-[#FFFDF9] via-[#FAF7F1] to-[#EFEADA] rounded-[24px] overflow-hidden transition-all duration-500 border border-[#D4C3A3]/35 group-hover:border-emerald-800/20">
-                  
-                  {/* Subtle brand palm organic leaf background overlay */}
-                  <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-[0.08] pointer-events-none" style={{ backgroundImage: `url('https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.43.jpeg')` }} />
-                  
-                  {/* Elegant premium emerald glowing aura behind product */}
-                  <div className="absolute w-48 h-48 bg-emerald-600/[0.08] rounded-full blur-2xl group-hover:scale-135 transition-transform duration-700 pointer-events-none" />
-                  
-                  {/* Product PNG image - beautifully showcased with rich natural colors preserved */}
-                  <img
-                    src={prod.imageUrl}
-                    alt={tField(prod.name)}
-                    className="h-full w-auto object-contain relative z-10 pointer-events-none select-none transition-all duration-500 ease-out group-hover:scale-105 filter drop-shadow-[0_16px_32px_rgba(4,47,31,0.15)]"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-
-                {/* Text Metadata Panel */}
-                <div className="px-1 py-5">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#A89558] bg-[#FAF7F0] border border-[#D4C3A3]/30 py-1 px-3 rounded-md inline-block mb-3.5">
-                    {tField(prod.category)}
-                  </span>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-[#002016] tracking-tight group-hover:text-emerald-800 transition-colors duration-300 leading-snug">
-                    {tField(prod.name)}
-                  </h3>
-                  <p className="mt-3 text-sm text-slate-600 font-light leading-relaxed min-h-[72px]">
-                    {tField(prod.shortDesc)}
-                  </p>
-                </div>
-              </div>
-
-              {/* Bottom Card Controls Section */}
-              <div className="px-1 pt-5 border-t border-slate-100 flex items-center justify-between mt-auto">
-                <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-emerald-800/60">
-                  {tField(labels.brand_purity)}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setSelectedProduct(prod)}
-                  className="inline-flex items-center space-x-1.5 px-5 py-3 bg-[#002016] text-[#A89558] hover:text-white hover:bg-emerald-950 font-bold rounded-xl text-xs tracking-wide transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none cursor-pointer"
-                  id={`btn-saiba-mais-${prod.id}`}
-                >
-                  <span>{tField(labels.btn_details)}</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+        {/* Categories Tab Bar Selector */}
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-16 max-w-2xl mx-auto p-1.5 bg-[#002016]/5 backdrop-blur-md rounded-2xl sm:rounded-full border border-[#D4C3A3]/25">
+          {categoriesList.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`relative px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-wide transition-all duration-300 focus:outline-none cursor-pointer ${
+                  isActive ? "text-white bg-[#002016]" : "text-emerald-950/75 hover:text-emerald-950 hover:bg-[#002016]/5"
+                }`}
+                style={{ WebkitTapHighlightColor: "transparent" }}
+              >
+                <span className="relative z-10">{tField(cat.label)}</span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* Products Grid with magnificent animated borders and images */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((prod) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                key={prod.id}
+                whileHover={{ y: -6 }}
+                className="bg-white rounded-[32px] border border-[#EBE6DD] hover:border-[#A89558]/60 transition-all duration-500 flex flex-col justify-between h-full group shadow-[0_4px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_24px_50px_rgba(0,32,22,0.06)] p-6 relative"
+                id={`prod-card-${prod.id}`}
+              >
+                <div>
+                  {/* Visual Image Container - beautiful soft vignette display plate with premium warm background and glowing aura */}
+                  <div className="relative h-72 w-full flex items-center justify-center p-8 bg-gradient-to-b from-[#FFFDF9] via-[#FAF7F1] to-[#EFEADA] rounded-[24px] overflow-hidden transition-all duration-500 border border-[#D4C3A3]/25 group-hover:border-emerald-800/10">
+                    
+                    {/* Subtle brand palm organic leaf background overlay */}
+                    <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-[0.05] pointer-events-none" style={{ backgroundImage: `url('https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.43.jpeg')` }} />
+                    
+                    {/* Elegant premium emerald glowing aura behind product */}
+                    <div className="absolute w-44 h-44 bg-emerald-600/[0.04] rounded-full blur-2xl group-hover:scale-130 transition-transform duration-700 pointer-events-none" />
+                    
+                    {/* floating glass pedestal for products */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-44 h-5 rounded-full bg-slate-300/[0.12] blur-xs border border-white/10 [transform:rotateX(75deg)] group-hover:scale-110 transition-transform duration-500" />
+
+                    {/* Left corner Category Label */}
+                    <span className="absolute top-4 left-4 text-[9px] font-mono font-bold uppercase tracking-widest text-[#FAF9F5] bg-[#002016] py-1 px-2.5 rounded-md inline-block z-20">
+                      {tField(prod.category)}
+                    </span>
+
+                    {/* Right corner active Seal Tag */}
+                    <span className="absolute top-4 right-4 text-[9px] font-mono font-bold uppercase tracking-wide text-emerald-800 bg-[#FAF7F0] border border-[#D4C3A3]/25 py-1 px-2.5 rounded-md inline-block z-20">
+                      {tField(prod.badge)}
+                    </span>
+
+                    {/* Product PNG image - beautifully showcased with rich natural colors preserved */}
+                    <img
+                      src={prod.imageUrl}
+                      alt={tField(prod.name)}
+                      className="h-[80%] w-auto object-contain relative z-10 pointer-events-none select-none transition-all duration-500 ease-out group-hover:translate-y-[-10px] group-hover:scale-103 filter drop-shadow-[0_12px_24px_rgba(4,47,31,0.12)]"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+
+                  {/* Text Metadata Panel */}
+                  <div className="px-1 py-5 text-left">
+                    <h3 className="font-display text-xl font-extrabold text-[#002016] tracking-tight group-hover:text-emerald-900 transition-colors duration-300 leading-snug">
+                      {tField(prod.name)}
+                    </h3>
+                    <p className="mt-2.5 text-slate-600 text-sm font-light leading-relaxed min-h-[64px]">
+                      {tField(prod.shortDesc)}
+                    </p>
+
+                    {/* Dynamic High-Value Spec Micro-Grid (2 items face-to-face) */}
+                    <div className="mt-4 grid grid-cols-2 gap-2 pt-4 border-t border-slate-100">
+                      {prod.specs.slice(0, 2).map((item, idx) => (
+                        <div key={idx} className="p-2.5 bg-slate-50/70 rounded-xl border border-slate-100/80 flex flex-col justify-between text-left">
+                          <span className="text-[9px] uppercase font-mono font-bold tracking-widest text-[#A89558] block">
+                            {tField(item.label)}
+                          </span>
+                          <span className="text-xs font-extrabold text-[#002016] mt-0.5 truncate block">
+                            {tField(item.value)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Card Controls Section */}
+                <div className="px-1 pt-4 border-t border-slate-100 flex items-center justify-between mt-4">
+                  <span className="text-[9px] uppercase font-mono font-bold tracking-wider text-[#A89558]">
+                    {tField(labels.brand_purity)}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProduct(prod)}
+                    className="inline-flex items-center space-x-1.5 px-4.5 py-2.5 bg-[#002016] text-[#A89558] hover:text-[#FAF9F5] hover:bg-emerald-950 font-bold rounded-xl text-xs tracking-wide transition-all duration-300 shadow-xs hover:shadow-md focus:outline-none cursor-pointer"
+                    id={`btn-saiba-mais-${prod.id}`}
+                  >
+                    <span>{tField(labels.btn_details)}</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Dynamic spec sheets specifications Modal */}
         <AnimatePresence>

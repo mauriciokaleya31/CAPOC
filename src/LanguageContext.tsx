@@ -29,8 +29,8 @@ const translations: Record<Language, Record<string, string>> = {
     hero_badge: "100% Produzido em Cabinda, Angola",
 
     // About
-    about_title: "A Nossa Visão de Desenvolvimento",
-    about_desc: "A CAPOC nasceu para posicionar Cabinda no centro da autossuficiência de gorduras alimentares e derivados biológicos de Angola. Alinhando ecologia e tecnologia, garantimos zero emissões térmicas.",
+    about_title: "Sobre Nós",
+    about_desc: "A CAPOC – Cabinda Palm Oil Corporation é uma empresa agro-industrial angolana criada com o propósito de desenvolver uma das mais modernas e integradas plataformas de produção e transformação de óleo de palma em Angola.\n\nSediada na Província de Cabinda, a CAPOC nasce com uma visão de longo prazo, orientada para contribuir activamente para a segurança alimentar, a industrialização nacional, a substituição de importações e a criação de valor sustentável para Angola.",
     about_metric_ha: "Hectares de Cultivo",
     about_metric_cap: "Capacidade Anual",
     about_metric_jobs: "Empregos Locais",
@@ -108,8 +108,8 @@ const translations: Record<Language, Record<string, string>> = {
     hero_cta_partner: "Join as Partner",
     hero_badge: "100% Produced in Cabinda, Angola",
 
-    about_title: "Our Vision for Growth",
-    about_desc: "CAPOC was founded to put Cabinda at the heart of Angola's self-sufficiency in fats and biological derivatives. Combining ecology and technology, we guarantee zero thermal waste.",
+    about_title: "About Us",
+    about_desc: "CAPOC – Cabinda Palm Oil Corporation is an Angolan agro-industrial company established with the purpose of developing one of the most modern and integrated platforms for palm oil production and processing in Angola.\n\nBased in Cabinda Province, CAPOC is born with a long-term vision, oriented to actively contribute to food security, national industrialization, import substitution, and the creation of sustainable value for Angola.",
     about_metric_ha: "Cultivation Hectares",
     about_metric_cap: "Annual Capacity",
     about_metric_jobs: "Local Jobs",
@@ -180,8 +180,8 @@ const translations: Record<Language, Record<string, string>> = {
     hero_cta_partner: "Rejoindre comme Partenaire",
     hero_badge: "100% Produit à Cabinda, Angola",
 
-    about_title: "Notre Vision de Croissance",
-    about_desc: "CAPOC est née pour positionner Cabinda au centre de l'autosuffisance en graisses alimentaires de l'Angola. Alliant écologie et technologie, nous garantissons zéro déchet thermique.",
+    about_title: "À Propos de Nous",
+    about_desc: "La CAPOC – Cabinda Palm Oil Corporation est une entreprise agro-industrielle angolaise créée dans le but de développer l'une des plateformes les plus modernes et intégrées de production et de transformation d'huile de palme en Angola.\n\nBasée dans la province de Cabinda, la CAPOC naît avec une vision à long terme, orientée vers une contribution active à la sécurité alimentaire, à l'industrialisation nationale, à la substitution des importations et à la création de valeur durable pour l'Angola.",
     about_metric_ha: "Hectares de Culture",
     about_metric_cap: "Capacité Annuelle",
     about_metric_jobs: "Emplois Locaux",
@@ -252,8 +252,8 @@ const translations: Record<Language, Record<string, string>> = {
     hero_cta_partner: "Unirse como Socio",
     hero_badge: "100% Producido en Cabinda, Angola",
 
-    about_title: "Nuestra Visión de Desarrollo",
-    about_desc: "CAPOC nació para posicionar a Cabinda en el centro de la autosuficiencia de aceites de Angola, alineando ecología con tecnología de punta.",
+    about_title: "Sobre Nosotros",
+    about_desc: "CAPOC – Cabinda Palm Oil Corporation es una empresa agroindustrial angoleña creada con el propósito de desarrollar una de las plataformas más modernas e integradas para la producción y transformación de aceite de palma en Angola.\n\nSediada en la provincia de Cabinda, la CAPOC nace con una visión a largo plazo, orientada a contribuir activamente a la seguridad de la alimentación, la industrialización nacional, la sustitución de importaciones y la creación de valor sostenible para Angola.",
     about_metric_ha: "Hectáreas Cultivadas",
     about_metric_cap: "Capacidad Anual",
     about_metric_jobs: "Empleos Locales",
@@ -324,8 +324,8 @@ const translations: Record<Language, Record<string, string>> = {
     hero_cta_partner: "加入我们",
     hero_badge: "100% 安哥拉卡宾达本地制造",
 
-    about_title: "我们的发展愿景",
-    about_desc: "CAPOC旨在使卡宾达成为安哥拉健康食用油脂及相关衍生品的供应核心。我们秉承科技与生态融合，实现零热损耗生产。",
+    about_title: "关于我们",
+    about_desc: "CAPOC – Cabinda Palm Oil Corporation（卡宾达棕榈油公司）是一家安哥拉农工企业，旨在安哥拉建立最现代化的棕榈油一体化生产和加工平台。\n\nCAPOC 总部位于卡宾达省，秉持长期发展愿景，致力于积极推动安哥拉的粮食安全、国家工业化、进口替代以及创造可持续价值。",
     about_metric_ha: "种植面积(公顷)",
     about_metric_cap: "年度总产量产能",
     about_metric_jobs: "创造本地岗位",
@@ -396,8 +396,8 @@ const translations: Record<Language, Record<string, string>> = {
     hero_cta_partner: "انضم إلينا كشريك",
     hero_badge: "منتج برأس مال وطني ١٠٠٪ في مقاطعة كابيندا، أنغولا",
 
-    about_title: "رؤيتنا للتنمية والريادة الغذائية",
-    about_desc: "تأسست CAPOC لتكون كابيندا قلب الاكتفاء الذاتي من الزيوت والدهون والمكملات العضوية في أنغولا بشكل يحمي البيئة ووفق أحدث أنظمة تكرير خالية من الانبعاثات الحرارية الضارة.",
+    about_title: "من نحن",
+    about_desc: "كابوك – مؤسسة كابيندا لزيت النخيل (CAPOC) هي شركة زراعية صناعية أنغولية تأسست بهدف تطوير واحدة من أحدث وأكثر منصات إنتاج وتحويل زيت النخيل تكاملاً في أنغولا.\n\nيقع مقر كابوك في مقاطعة كابيندا، وتولد برؤية طويلة المدى تهدف إلى المساهمة بنشاط في الأمن الغذائي، والتصنيع الوطني، وإحلال الواردات، وخلق قيمة مستدامة أنغولية.",
     about_metric_ha: "هكتار زراعي نشط",
     about_metric_cap: "القدرة الإنتاجية السنوية",
     about_metric_jobs: "وظيفة للمجتمع المحلي",

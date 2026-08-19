@@ -152,6 +152,9 @@ export default function Gallery() {
                     alt={item.title}
                     className="w-full h-full object-cover opacity-85 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500 ease-out"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg";
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent flex items-end p-5" />
                   
@@ -223,6 +226,9 @@ export default function Gallery() {
                     alt={galleryItems[lightboxIndex].title}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg";
+                    }}
                   />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-brand-950/80 text-white border border-brand-500/30 text-[10px] font-bold uppercase rounded-md backdrop-blur-xs">

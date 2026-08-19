@@ -159,6 +159,9 @@ export default function ProjectDetails() {
                   alt={currentData.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
@@ -424,235 +427,16 @@ export default function ProjectDetails() {
           </motion.div>
         </AnimatePresence>
 
-        {/* ================= SECTION 7: CAPACIDADE DE PRODUÇÃO ================= */}
-        <div className="mt-28 pt-16 border-t border-slate-150">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left: Interactive Projection SVG Chart + Liquid Simulation Cylinder */}
-            <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-xl space-y-8">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-4">
-                <div>
-                  <h4 className="font-display font-black text-brand-950 text-xl tracking-tight">
-                    {t("proj_growth_title")}
-                  </h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
-                    {t("proj_growth_desc")}
-                  </p>
-                </div>
-                <div className="flex items-center space-x-2 text-[10px] font-mono text-slate-600 bg-slate-50 px-2.5 py-1 rounded border border-slate-100 mt-2 sm:mt-0">
-                  <Calendar className="w-3.5 h-3.5 text-[#A89558]" />
-                  <span>Plano Diretor 2026-2032</span>
-                </div>
-              </div>
-
-              {/* Liquid Refinery Chamber & Projection Chart Combined Dashboard */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                
-                {/* Simulated Glass Refining Cylinder (Interactive Organic Oil Refining Column) */}
-                <div className="md:col-span-4 bg-slate-950 p-4 rounded-xl border border-slate-800 text-center relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,149,88,0.15)_0%,_transparent_75%)]" />
-                  
-                  <span className="block text-[8px] font-mono font-bold tracking-widest text-[#A89558] uppercase mb-2">
-                    {language === "pt" ? "REFINE DETECTOR" : "REFINING DETECTOR"}
-                  </span>
-
-                  {/* Glass Cylinder Outer Frame */}
-                  <div className="relative h-44 w-16 mx-auto bg-slate-900/90 rounded-full border-2 border-slate-700/80 p-1 overflow-hidden shadow-inner flex items-end">
-                    
-                    {/* Measurement Lines tick marks */}
-                    <div className="absolute inset-y-4 right-2 w-1.5 flex flex-col justify-between text-[6px] font-mono text-slate-600 select-none z-10">
-                      <span>100%</span>
-                      <span>75%</span>
-                      <span>50%</span>
-                      <span>25%</span>
-                      <span>0%</span>
-                    </div>
-
-                    {/* Animated Golden Liquid Column */}
-                    <div 
-                      className="w-full rounded-b-full transition-all duration-1000 ease-out relative"
-                      style={{ 
-                        height: selectedChartPhase === 0 ? "4%" : 
-                                selectedChartPhase === 1 ? "25%" : 
-                                selectedChartPhase === 2 ? "55%" : "100%",
-                        background: "linear-gradient(to top, #002016 0%, #A89558 70%, #ffdf79 100%)"
-                      }}
-                    >
-                      {/* Interactive Bubble Stream inside Golden Liquid */}
-                      {selectedChartPhase > 0 && (
-                        <div className="absolute inset-0 overflow-hidden rounded-b-full opacity-80 mix-blend-screen pointer-events-none">
-                          <span className="absolute bottom-2 left-1/4 w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDuration: "1.2s" }} />
-                          <span className="absolute bottom-8 left-1/2 w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDuration: "2s" }} />
-                          <span className="absolute bottom-4 right-1/4 w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                          <span className="absolute bottom-12 left-1/3 w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDuration: "1.5s" }} />
-                        </div>
-                      )}
-
-                      {/* Top Glowing Wave header */}
-                      <div className="absolute -top-1 inset-x-0 h-2 bg-[#ffdf79] blur-[1px] rounded-full animate-pulse" />
-                    </div>
-                  </div>
-
-                  {/* Real-time Status readout */}
-                  <div className="mt-3">
-                    <span className="block text-[14px] font-mono font-extrabold text-white">
-                      {phases[selectedChartPhase].production.toLocaleString()} <span className="text-[9px] text-[#A89558] font-bold">T/A</span>
-                    </span>
-                    <span className="block text-[8px] font-mono text-slate-400 mt-0.5 uppercase tracking-wider">
-                      {phases[selectedChartPhase].hectares} {language === "pt" ? "ATIVOS" : "ACTIVE"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* SVG Projection Chart of Years */}
-                <div className="md:col-span-8 space-y-4">
-                  <div className="relative h-44 w-full flex items-end pt-6 pb-2 px-1 border-b border-slate-100">
-                    
-                    {/* Reference Lines */}
-                    <div className="absolute inset-x-0 bottom-2 border-b border-slate-100" />
-                    <div className="absolute inset-x-0 top-3/4 border-b border-dashed border-slate-100/60" />
-                    <div className="absolute inset-x-0 top-1/2 border-b border-dashed border-slate-150" />
-                    <div className="absolute inset-x-0 top-1/4 border-b border-dashed border-slate-150" />
-
-                    <div className="w-full flex justify-between items-end h-full relative z-10 pl-4 pr-1">
-                      {phases.map((ph, idx) => {
-                        const maxProduction = 35000;
-                        const pctHeight = ph.production > 0 ? (ph.production / maxProduction) * 85 : 8;
-                        const isSelected = selectedChartPhase === idx;
-
-                        return (
-                          <div 
-                            key={idx} 
-                            onClick={() => setSelectedChartPhase(idx)}
-                            className="flex flex-col items-center cursor-pointer group w-1/4 transition-all"
-                          >
-                            {/* Bar element */}
-                            <div 
-                              className="w-10 rounded-t-lg transition-all duration-700 relative overflow-hidden shadow-xs hover:scale-105"
-                              style={{ 
-                                height: `${pctHeight}%`,
-                                backgroundColor: isSelected ? "#A89558" : "rgba(0, 32, 22, 0.15)"
-                              }}
-                            >
-                              {isSelected && (
-                                <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(255,255,255,0.2)_0%,_transparent_100%)] animate-pulse" />
-                              )}
-                              <div className="absolute top-0 inset-x-0 h-1 bg-white/30" />
-                            </div>
-
-                            {/* Labels */}
-                            <span className={`text-[9px] mt-2 font-bold tracking-tight block ${
-                              isSelected ? "text-[#002016] font-black" : "text-slate-500"
-                            }`}>
-                              {ph.year}
-                            </span>
-                            <span className="text-[7px] text-slate-400 block font-light">
-                              {ph.hectares}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between text-[9px] font-mono font-bold text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-150">
-                    <span>{language === "pt" ? "ETAPA CORRENTE" : "CURRENT PHASE"}:</span>
-                    <span className="text-[#A89558] uppercase">{phases[selectedChartPhase].label}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Extra legend note */}
-              <div className="p-3.5 bg-[#002016]/5 rounded-xl border border-slate-150 text-[11px] font-serif italic text-slate-600">
-                {language === "pt" 
-                  ? "O crescimento por etapas salvaguarda o fluxo de caixa, permitindo que as receitas de vendas na fase 7.000 Ton autofinanciem a engenharia de expansão para as 35.000 Ton."
-                  : "Sequential phase increments protect corporate cash flows, enabling local sales revenues at the 7,000 Ton phase to self-finance expansion infrastructures toward the 35,000 Ton objective."
-                }
-              </div>
-            </div>
-
-            {/* Right: Counters and textual description */}
-            <div className="lg:col-span-5 space-y-8">
-              <div>
-                <span className="font-mono text-xs font-semibold text-brand-700 uppercase tracking-widest bg-brand-100 px-3 py-1 rounded-full">
-                  {language === "pt" ? "Produção Escalonável" : "Scalable Production"}
-                </span>
-                <h3 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-[#002016] tracking-tight leading-tight">
-                  {language === "pt" ? "Previsão Robustecida de Rendimento" : "Robust Yield Outlook"}
-                </h3>
-                <p className="mt-4 text-slate-600 text-sm sm:text-base font-light leading-relaxed">
-                  {language === "pt"
-                    ? "A nossa capacidade de extração cresce geometricamente à medida que as palmeiras cultivadas alcançam o estágio ótimo de frutificação biológica."
-                    : "Our physical extraction capacity grows logarithmically as our high-yield botanical palms approach their peak биологический production maturity."
-                  }
-                </p>
-              </div>
-
-              {/* Production block comparative figures */}
-              <div className="grid grid-cols-2 gap-3">
-                <div 
-                  onClick={() => setSelectedChartPhase(1)}
-                  className={`p-3.5 border rounded-xl cursor-pointer transition-all duration-300 flex justify-between items-center ${
-                    selectedChartPhase === 1 ? "bg-[#002016]/5 border-[#A89558] shadow-sm" : "bg-white border-slate-150"
-                  }`}
-                >
-                  <div className="text-left">
-                    <span className="text-[8px] uppercase font-mono font-bold text-slate-400 block">{t("proj_step_1")}</span>
-                    <h4 className="text-sm font-extrabold text-brand-950 tracking-tight mt-0.5">7.000 T/Ano</h4>
-                  </div>
-                  <div className="p-1.5 rounded-lg bg-emerald-100/50 text-emerald-900 shrink-0">
-                    <Play className="w-3 h-3 fill-emerald-900" />
-                  </div>
-                </div>
-
-                <div 
-                  onClick={() => setSelectedChartPhase(3)}
-                  className={`p-3.5 border rounded-xl cursor-pointer transition-all duration-300 flex justify-between items-center ${
-                    selectedChartPhase === 3 ? "bg-[#002016]/5 border-[#A89558] shadow-sm" : "bg-white border-slate-150"
-                  }`}
-                >
-                  <div className="text-left">
-                    <span className="text-[8px] uppercase font-mono font-bold text-slate-400 block">{t("proj_step_2")}</span>
-                    <h4 className="text-sm font-extrabold text-brand-850 tracking-tight mt-0.5">35.000 T/Ano</h4>
-                  </div>
-                  <div className="p-1.5 rounded-lg bg-amber-100/50 text-amber-900 shrink-0">
-                    <TrendingUp className="w-3 h-3 text-amber-900" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Dynamic explanations details based on switcher */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={selectedChartPhase}
-                  initial={{ opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="p-5 bg-white rounded-xl border border-slate-200/90 shadow-2xs flex items-start space-x-3"
-                >
-                  <Info className="w-5 h-5 text-brand-700 shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-bold text-xs sm:text-sm text-brand-950 uppercase tracking-tight">
-                      {phases[selectedChartPhase].label}
-                    </h5>
-                    <p className="mt-1 text-xs text-slate-600 font-light leading-relaxed">
-                      {phases[selectedChartPhase].desc}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-
         {/* Industrial Interlude graphics */}
-        <div className="mt-24 relative rounded-2xl overflow-hidden h-72 shadow-sm group">
+        <div className="mt-16 relative rounded-2xl overflow-hidden h-72 shadow-sm group">
           <img
             src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.32.jpeg"
             alt="Fábrica Prensadora CAPOC em Cabinda"
             className="w-full h-full object-cover transition duration-500 scale-102 group-hover:scale-105"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/60 to-transparent flex flex-col justify-end p-8" />
           <div className="absolute bottom-6 left-6 right-6 text-white text-xs max-w-2xl z-10">

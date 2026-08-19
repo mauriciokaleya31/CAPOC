@@ -1,14 +1,11 @@
-import { useState } from "react";
 import { 
-  Users, Landmark, FileText, GraduationCap, Factory, 
-  Trees, Droplet, Heart, CheckCircle, ShieldCheck, Leaf 
+  Users, Landmark, FileText, GraduationCap, Factory 
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useLanguage } from "../LanguageContext";
 
 export default function Impact() {
   const { t, language } = useLanguage();
-  const [activePractice, setActivePractice] = useState<number>(0);
 
   const impactos = [
     {
@@ -21,7 +18,7 @@ export default function Impact() {
       desc: language === "pt" ? "Geração de centenas de postos de trabalho diretos e indiretos nos setores agrícola e industrial da Província de Cabinda, priorizando recrutamento local." :
             language === "en" ? "Generation of hundreds of direct and indirect jobs in the agricultural and industrial sectors of Cabinda Province, prioritizing local recruitment." :
             language === "fr" ? "Génération de centaines d'emplois directs et indirects dans les secteurs agricole et industriel de la province de Cabinda, en priorisant le recrutement local." :
-            language === "es" ? "Generación de cientos de puestos de trabajo directos e indirectos en los sectores agrícola e industrial de la provincia de Cabinda, priorizando la contratación local." :
+            language === "es" ? "Generación de cientos de puestos de trabalho directos e indirectos en los sectores agrícola e industrial de la provincia de Cabinda, priorizando la contratación local." :
             language === "zh" ? "在喀宾达省农业和工业部门创造数百个直接和间接就业机会，优先招收当地员工。" : "توليد مئات من فرص العمل المباشرة وغير المباشرة في القطاعين الزراعي والصناعي في مقاطعة كابيندا، مع إعطاء الأولوية للتوظيف المحلي.",
     },
     {
@@ -78,49 +75,10 @@ export default function Impact() {
     }
   ];
 
-  const greenPractices = [
-    {
-      id: 0,
-      title: language === "pt" ? "Gestão Responsável dos Recursos" : "Responsible Resource Management",
-      desc: language === "pt" ? "Protocolos rígidos que salvaguardam integridade do solo contra exaustão de nutrientes através de rotação orgânica e adubação natural rica em potássio." : "Strict protocols protecting soil integrity from nutrient depletion through active organic rotation and potassium-rich natural fertilization.",
-      icon: <Trees className="w-5 h-5" />
-    },
-    {
-      id: 1,
-      title: language === "pt" ? "Uso Eficiente da Água" : "Efficient Water Harvesting",
-      desc: language === "pt" ? "Sistemas fechados de lavagem térmica industrial e retenção pluvial inteligente para irrigação lenta sem erosão de encostas e sem escassez hídrica local." : "Closed loop thermal factory washing systems and rainwater capture to enable slow, erosion-free agricultural irrigation without depleting regional water tables.",
-      icon: <Droplet className="w-5 h-5" />
-    },
-    {
-      id: 2,
-      title: language === "pt" ? "Preservação Ambiental" : "Ecological Habitat Protection",
-      desc: language === "pt" ? "Mapeamento ecológico profundo para desflorestação zero de matas nativas e preservação de corredores de circulação da fauna nativa de Cabinda." : "Deep geographical mapping guaranteeing zero deforestation of primary native canopy forests and protecting biological migration corridors of Cabinda's native fauna.",
-      icon: <Leaf className="w-5 h-5" />
-    },
-    {
-      id: 3,
-      title: language === "pt" ? "Desenvolvimento Inclusivo" : "Inclusive Development Programs",
-      desc: language === "pt" ? "Criação de planos de igualdade de género para admissão operacional e capacitação de infraestruturas hídricas nos bairros vizinhos." : "Gender equity action pipelines for technical hire recruitment and localized water supply micro-infrastructures built directly in surrounding host communities.",
-      icon: <Users className="w-5 h-5" />
-    },
-    {
-      id: 4,
-      title: language === "pt" ? "Apoio às Comunidades" : "Direct Community Empowerment",
-      desc: language === "pt" ? "Parceria direta com postos de atendimento de saúde médica comunitários móveis, distribuição de fertilizantes orgânicos e kits escolares." : "On-ground partnership supporting mobile primary medical clinics, organizing free organic fertilizer shares, and donating essential academic supplies to local schools.",
-      icon: <Heart className="w-5 h-5" />
-    },
-    {
-      id: 5,
-      title: language === "pt" ? "Crescimento Sustentável" : "UN Target Alignment",
-      desc: language === "pt" ? "Alinhamento corporativo contínuo com os Objetivos de Desenvolvimento Sustentável (ODS) da Organização das Nações Unidas." : "Continuous alignment of all business goals with the United Nations Sustainable Development Goals (SDGs) to drive reliable socio-economic integration.",
-      icon: <ShieldCheck className="w-5 h-5" />
-    }
-  ];
-
   return (
     <div id="impacto-e-sustentabilidade">
       
-      {/* ================= SECTION 9: IMPACTO ECONÓMICO E SOCIAL ================= */}
+      {/* ================= SECTION: IMPACTO ECONÓMICO E SOCIAL ================= */}
       <section className="relative py-28 bg-[#002016] text-white overflow-hidden scroll-mt-20" id="impacto">
         
         {/* IMPROVED: High contrast background picture with rich image depth */}
@@ -171,7 +129,7 @@ export default function Impact() {
                 </motion.p>
               </div>
 
-              {/* REQUESTED ACTION: Imposing portrait of local operators, farmer, and active greenhouses in action */}
+              {/* Imposing portrait of local operators, farmer, and active greenhouses in action */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -256,108 +214,6 @@ export default function Impact() {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* ================= SECTION 10: SUSTENTABILIDADE ================= */}
-      <section className="relative py-28 bg-[#002016] text-white overflow-hidden scroll-mt-20 border-t border-white/5" id="sustentabilidade">
-        
-        {/* Background Nature Backdrop with Dark Green Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.38.jpeg"
-            alt="Manejo Sustentável CAPOC"
-            className="w-full h-full object-cover opacity-20 scale-102 select-none pointer-events-none filter brightness-50"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#002016] via-[#002016]/95 to-[#002016] z-10" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs font-semibold text-[#A89558] uppercase tracking-widest bg-emerald-900/40 border border-[#A89558]/30 px-3.5 py-1 rounded-full">
-              {language === "pt" ? "Sustentabilidade Ecológica" : "Ecological Balance & ODS"}
-            </span>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-              {language === "pt" ? "Sustentabilidade Ativa do Solo e da Vida" : "Active Soil & Biodiversity Protocol"}
-            </h2>
-            <p className="mt-3 text-gray-300 font-light text-sm sm:text-base leading-relaxed">
-              {language === "pt" 
-                ? "O amanhã de Cabinda é desenhado respeitando os ecossistemas. Adotamos padrões mundiais exigentes de manejo no agronegócio de palma orgânica."
-                : "The tomorrow of Cabinda is engineered with deep environmental integrity. We adopt strict global standards for zero-emissions organic palm oil agribusiness."
-              }
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
-            
-            {/* Left: Dynamic practice interactive explainer cards with motion */}
-            <div className="xl:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {greenPractices.map((practice, index) => {
-                const isActive = activePractice === index;
-                return (
-                  <motion.div 
-                    key={index} 
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    onClick={() => setActivePractice(index)}
-                    className={`p-5 rounded-2xl border transition-all duration-350 cursor-pointer flex items-start space-x-4 ${
-                      isActive 
-                        ? "bg-[#002016] border-[#A89558] shadow-lg text-white scale-102" 
-                        : "bg-white/5 border-white/10 text-gray-200 hover:bg-white/10"
-                    }`}
-                    id={`sustainability-practice-${index}`}
-                  >
-                    <div className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${
-                      isActive ? "bg-[#A89558] text-white animate-pulse" : "bg-white/10 text-[#A89558]"
-                    }`}>
-                      {practice.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-display font-black text-sm tracking-tight text-white select-none">
-                        {practice.title}
-                      </h4>
-                      <p className={`mt-1.5 text-xs font-light leading-relaxed select-none ${
-                        isActive ? "text-gray-200 font-medium" : "text-gray-300/80"
-                      }`}>
-                        {practice.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Right: Informational carbon quota details */}
-            <div className="xl:col-span-4 bg-[#002016]/80 p-6 sm:p-8 rounded-2xl border border-[#A89558]/30 space-y-6 shadow-xl relative overflow-hidden group">
-              <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-[#A89558]/10 rounded-full blur-xl group-hover:scale-125 transition-transform" />
-              
-              <span className="text-[9px] uppercase font-mono tracking-widest text-[#A89558] font-black block">
-                {language === "pt" ? "PROTOCOLO CARBONO REUTILIZÁVEL" : "CIRCULAR ZERO WASTE CARBON"}
-              </span>
-              <h3 className="font-display font-extrabold text-lg text-white">
-                {language === "pt" ? "Compromissos Climáticos Registados" : "Registered Decarbonization Targets"}
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed">
-                {language === "pt"
-                  ? "Cada lote de palmeiras é georreferenciado e auditado por biólogos agrícolas. Os resíduos de fibra produzidos na extração física servem como adubo de cobertura, gerando carbono nulo."
-                  : "Every crop zone is georeferenced and audited by specialized conservationists. Solid organic waste generated in mechanical presses is fully recycled as organic mulch, guaranteeing zero open-air carbon outputs."
-                }
-              </p>
-              
-              <div className="pt-4 border-t border-white/10 text-center">
-                <span className="font-mono text-3.5xl font-black text-[#A89558]">100%</span>
-                <span className="block text-[10px] text-gray-300 mt-1 uppercase font-bold tracking-wider">
-                  {language === "pt" ? "Processamento Sem Aditivos Químicos" : "Zero Chemical Additive Refinement"}
-                </span>
-              </div>
-            </div>
-
-          </div>
-
         </div>
       </section>
 

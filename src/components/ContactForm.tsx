@@ -155,8 +155,8 @@ export default function ContactForm() {
                     <span className="block text-[11px] font-mono text-[#A89558] uppercase tracking-wide font-bold">
                       {language === "pt" ? "Canal Digital Principal" : "Direct Digital Access"}
                     </span>
-                    <a href="mailto:info@capoc-angola.com" className="font-display font-bold text-white text-sm block hover:text-[#A89558] hover:underline transition mt-0.5">
-                      info@capoc-angola.com
+                    <a href="mailto:geral@capoc.ao" className="font-display font-bold text-white text-sm block hover:text-[#A89558] hover:underline transition mt-0.5">
+                      geral@capoc.ao
                     </a>
                     <span className="text-[10px] text-gray-400 font-mono mt-0.5 block flex items-center">
                       <Clock className="w-3 h-3 mr-1 text-[#A89558]" /> 
@@ -165,21 +165,34 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-                {/* Item: Phone */}
+                {/* Item: Phone & Operational Lines */}
                 <div className="flex items-start space-x-4 group">
                   <div className="p-3 bg-white/5 text-[#A89558] rounded-2xl border border-white/10 group-hover:bg-[#A89558]/10 transition duration-300">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="w-full">
                     <span className="block text-[11px] font-mono text-[#A89558] uppercase tracking-wide font-bold">
-                      {language === "pt" ? "Contacto Telefónico" : "Phone Operations"}
+                      {language === "pt" ? "Contacto Geral & Linhas Directas" : "Phone Desk & Direct Lines"}
                     </span>
                     <a href="tel:+244931228102" className="font-display font-bold text-white text-sm block hover:text-[#A89558] hover:underline transition mt-0.5">
                       +244 931 228 102
                     </a>
-                    <span className="text-[10px] text-gray-400 font-mono mt-0.5 block">
-                      {language === "pt" ? "Segunda a Sexta • 08h às 17h" : "Monday to Friday • GMT+1 8AM to 5PM"}
-                    </span>
+                    
+                    {/* Operational lines badges */}
+                    <div className="mt-2.5 grid grid-cols-3 gap-1.5 pt-2 border-t border-white/10">
+                      <div className="p-1.5 rounded-lg bg-white/5 border border-white/5 text-center">
+                        <span className="block text-[8px] font-mono font-bold text-[#A89558]">CAPOC</span>
+                        <a href="tel:+244955919118" className="text-[10px] font-mono text-gray-200 hover:text-white block font-semibold">955 91 91 18</a>
+                      </div>
+                      <div className="p-1.5 rounded-lg bg-white/5 border border-white/5 text-center">
+                        <span className="block text-[8px] font-mono font-bold text-[#A89558]">LIZANDO</span>
+                        <a href="tel:+244955916811" className="text-[10px] font-mono text-gray-200 hover:text-white block font-semibold">955 91 68 11</a>
+                      </div>
+                      <div className="p-1.5 rounded-lg bg-white/5 border border-white/5 text-center">
+                        <span className="block text-[8px] font-mono font-bold text-[#A89558]">TRANSLITA</span>
+                        <a href="tel:+244955914659" className="text-[10px] font-mono text-gray-200 hover:text-white block font-semibold">955 91 46 59</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

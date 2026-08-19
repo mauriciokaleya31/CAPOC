@@ -1,97 +1,164 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import HomeView from "./components/HomeView";
 import About from "./components/About";
 import ProjectDetails from "./components/ProjectDetails";
 import Products from "./components/Products";
-import Impact from "./components/Impact";
 import Gallery from "./components/Gallery";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
-import { LanguageProvider } from "./LanguageContext";
+import PageHeader from "./components/PageHeader";
+import { LanguageProvider, useLanguage } from "./LanguageContext";
 import PartnerModal from "./components/PartnerModal";
 import FloatingAngolaFlag from "./components/FloatingAngolaFlag";
 
+type PageType = "inicio" | "sobre" | "projectos" | "produtos" | "galeria" | "contactos";
+
 function AppContent() {
-  const [activeSection, setActiveSection] = useState("");
+  const [currentPage, setCurrentPage] = useState<PageType>("inicio");
+  const { t, language } = useLanguage();
 
+  // Synchronize with URL hash on mount & on hashchange
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
+    const parseHash = () => {
+      const hash = window.location.hash.toLowerCase().replace("#", "").replace("/", "");
+      if (hash === "sobre") return "sobre";
+      if (hash === "projectos" || hash === "projeto" || hash === "projetos") return "projectos";
+      if (hash === "produtos" || hash === "produto") return "produtos";
+      if (hash === "galeria") return "galeria";
+      if (hash === "contactos" || hash === "contacto") return "contactos";
+      return "inicio";
     };
 
-    const observer = new IntersectionObserver(handleIntersection, {
-      rootMargin: "-25% 0px -65% 0px", // triggers when section is in active focus window
-    });
+    setCurrentPage(parseHash());
 
-    const targetIds = [
-      "sobre", 
-      "projeto", 
-      "produtos", 
-      "sustentabilidade", 
-      "impacto", 
-      "galeria", 
-      "contacto"
-    ];
-    targetIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      targetIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) observer.unobserve(el);
-      });
+    const handleHashChange = () => {
+      setCurrentPage(parseHash());
+      window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  const handleNavigate = (pageKey: string) => {
+    let normalizedPage: PageType = "inicio";
+    if (pageKey === "sobre") normalizedPage = "sobre";
+    else if (pageKey === "projectos" || pageKey === "projeto") normalizedPage = "projectos";
+    else if (pageKey === "produtos") normalizedPage = "produtos";
+    else if (pageKey === "galeria") normalizedPage = "galeria";
+    else if (pageKey === "contactos" || pageKey === "contacto") normalizedPage = "contactos";
+
+    setCurrentPage(normalizedPage);
+    window.location.hash = normalizedPage === "inicio" ? "/" : `/${normalizedPage}`;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] selection:bg-[#002016] selection:text-[#A89558]" id="main-application-wrapper">
-      {/* Floating navigation bar */}
-      <Navbar activeSection={activeSection} />
+    <div className="relative min-h-screen bg-[#f8fafc] selection:bg-[#002016] selection:text-[#A89558] flex flex-col justify-between" id="main-application-wrapper">
+      {/* Top Main Navigation Bar present on all pages */}
+      <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
 
-      {/* Main sections layout assembly */}
-      <main>
-        {/* Banner with Majestic headlines */}
-        <Hero />
+      {/* Main Content Router */}
+      <main className="flex-grow">
+        {currentPage === "inicio" && (
+          <HomeView onNavigate={handleNavigate} />
+        )}
 
-        {/* Section 1: Institutional Core Info */}
-        <About />
+        {currentPage === "sobre" && (
+          <div>
+            <PageHeader
+              title={language === "pt" ? "Sobre a CAPOC & Sustentabilidade" : "About CAPOC & Sustainability"}
+              subtitle={language === "pt" 
+                ? "Conheça a história, os pilares fundamentais e o compromisso ecológico que guiam a Cabinda Palm Oil Corporation."
+                : "Discover the history, core pillars, and ecological commitment driving Cabinda Palm Oil Corporation."
+              }
+              badge={language === "pt" ? "Institucional & Ecologia" : "Institutional & Ecology"}
+              bgImage="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg"
+              currentPageKey="nav_about"
+              onNavigateHome={() => handleNavigate("inicio")}
+            />
+            <About />
+          </div>
+        )}
 
-        {/* Section 2: Technical/Industrial Aspects */}
-        <ProjectDetails />
+        {currentPage === "projectos" && (
+          <div>
+            <PageHeader
+              title={language === "pt" ? "Os Nossos Projectos" : "Our Projects"}
+              subtitle={language === "pt"
+                ? "Estruturação das componentes Agrícola e Industrial em Cabinda, integrando tecnologia de ponta e desenvolvimento comunitário."
+                : "Development of Agricultural and Industrial pillars in Cabinda, combining modern engineering and local outgrower integration."
+              }
+              badge={language === "pt" ? "Engenharia & Campo" : "Engineering & Operations"}
+              bgImage="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.42.jpeg"
+              currentPageKey="nav_project"
+              onNavigateHome={() => handleNavigate("inicio")}
+            />
+            <ProjectDetails />
+          </div>
+        )}
 
-        {/* Section 3: Products & derivatives list details */}
-        <Products />
+        {currentPage === "produtos" && (
+          <div>
+            <PageHeader
+              title={language === "pt" ? "Catálogo de Produtos e Derivados" : "Product Catalog & Derivatives"}
+              subtitle={language === "pt"
+                ? "Óleos alimentares de alta pureza, óleo de palmiste, sabões industriais, sabonetes de higiene e bagaço para nutrição animal."
+                : "High purity edible cooking oils, palm kernel oil, industrial soaps, toilet soaps, and animal feed meal."
+              }
+              badge={language === "pt" ? "Portefólio 100% Angola" : "100% Angolan Portfolio"}
+              bgImage="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.33.jpeg"
+              currentPageKey="nav_products"
+              onNavigateHome={() => handleNavigate("inicio")}
+            />
+            <Products />
+          </div>
+        )}
 
-        {/* Section 4: Socio-economical Impact & Sustainability Details */}
-        <Impact />
+        {currentPage === "galeria" && (
+          <div>
+            <PageHeader
+              title={language === "pt" ? "Galeria Fotográfica" : "Photo Gallery"}
+              subtitle={language === "pt"
+                ? "Imagens reais das nossas plantações, viveiros de sementes Tenera, estufas e infraestruturas industriais em Cabinda."
+                : "Real photos from our plantations, Tenera nurseries, greenhouses, and industrial facilities in Cabinda."
+              }
+              badge={language === "pt" ? "Registo Visual no Terreno" : "Field Visual Record"}
+              bgImage="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.39.jpeg"
+              currentPageKey="nav_gallery"
+              onNavigateHome={() => handleNavigate("inicio")}
+            />
+            <Gallery />
+          </div>
+        )}
 
-        {/* Section 5: Beautiful Interactive filterable Gallery */}
-        <Gallery />
-
-        {/* Section 8: Standardized Contact Interface */}
-        <ContactForm />
+        {currentPage === "contactos" && (
+          <div>
+            <PageHeader
+              title={language === "pt" ? "Contactos e Localização" : "Contacts & Location"}
+              subtitle={language === "pt"
+                ? "Entre em contacto com a nossa equipa comercial e corporativa em Cabinda ou Luanda."
+                : "Get in touch with our commercial and executive teams in Cabinda or Luanda."
+              }
+              badge={language === "pt" ? "Linhas Directas" : "Direct Lines"}
+              bgImage="https://visa.onlyvibes.online/wp-content/uploads/2026/06/1.png"
+              currentPageKey="nav_contact"
+              onNavigateHome={() => handleNavigate("inicio")}
+            />
+            <ContactForm />
+          </div>
+        )}
       </main>
 
-      {/* Floating Angola Pride widget brand */}
+      {/* Floating Angola Pride widget */}
       <FloatingAngolaFlag />
 
-      {/* Registration/Application Form Modal for Partners */}
+      {/* Registration / Partnership Form Modal */}
       <PartnerModal />
 
-      {/* Structured Legal and Presence Footer */}
-      <Footer />
+      {/* Structured Legal and Navigation Footer */}
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }

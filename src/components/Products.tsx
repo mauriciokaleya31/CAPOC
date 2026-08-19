@@ -625,6 +625,9 @@ export default function Products() {
                       alt={tField(prod.name)}
                       className="h-[80%] w-auto object-contain relative z-10 pointer-events-none select-none transition-all duration-500 ease-out group-hover:translate-y-[-10px] group-hover:scale-103 filter drop-shadow-[0_12px_24px_rgba(4,47,31,0.12)]"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/Oleo-de-Palma-Refinado.png";
+                      }}
                     />
                   </div>
 
@@ -725,6 +728,9 @@ export default function Products() {
                       alt={tField(selectedProduct.name)} 
                       className="h-full object-contain relative z-10 pointer-events-none select-none transition-transform duration-300 hover:scale-105"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/Oleo-de-Palma-Refinado.png";
+                      }}
                     />
                   </div>
 

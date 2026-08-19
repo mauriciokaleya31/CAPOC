@@ -1,33 +1,43 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowDown, Sprout, Building2, MapPin, Layers, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Sprout, Building2, MapPin, Layers, ChevronLeft, ChevronRight, Handshake } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 
-export default function Hero() {
+interface HeroProps {
+  onNavigate?: (page: string) => void;
+}
+
+export default function Hero({ onNavigate }: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { t, language } = useLanguage();
 
   const slides = [
     {
       image: "https://visa.onlyvibes.online/wp-content/uploads/2026/06/1.png",
-      tag: language === "pt" ? "Projecto Estratégico de Angola" : "Strategic Project of Angola",
-      title: language === "pt" ? "Cultivamos a Terra. Produzimos Excelência." : "We Cultivate Earth. We Produce Excellence.",
-      highlightTitle: language === "pt" ? "Sustentamos o Futuro." : "Supporting the Future.",
-      desc: t("hero_desc")
+      tag: language === "pt" ? "Projecto Agro-Industrial Estratégico de Angola" : "Angola's Strategic Agro-Industrial Project",
+      title: language === "pt" ? "Cultivamos a Terra. Produzimos Excelência." : "We Cultivate the Earth. We Produce Excellence.",
+      highlightTitle: language === "pt" ? "Sustentamos o Futuro." : "Sustaining the Future.",
+      desc: language === "pt" 
+        ? "A Cabinda Palm Oil Corporation (CAPOC) lidera a agro-indústria moderna angolana, gerando óleos orgânicos, sabões glicerinados e bioenergia sustentável de padrão mundial."
+        : "Cabinda Palm Oil Corporation (CAPOC) leads standard modern Angolan agro-industry, producing world-class organic oils, glycerin soaps, and sustainable bioenergy."
     },
     {
       image: "https://visa.onlyvibes.online/wp-content/uploads/2026/06/2.png",
-      tag: language === "pt" ? "Sustentabilidade Ecológica" : "Ecological Sustainability",
+      tag: language === "pt" ? "Sustentabilidade & Desflorestação Zero" : "Sustainability & Zero Deforestation",
       title: language === "pt" ? "Harmonia Biológica e Recursos Protegidos." : "Biological Harmony & Protected Resources.",
-      highlightTitle: language === "pt" ? "Proteção Ambiental Activa." : "Active Environmental Care.",
-      desc: language === "pt" ? "Utilizamos práticas de desflorestação zero e preservação de corredores rurais." : "We utilize zero deforestation models and protect critical ecological reserves."
+      highlightTitle: language === "pt" ? "Desenvolvimento Verde em Cabinda." : "Green Growth in Cabinda.",
+      desc: language === "pt" 
+        ? "Implementamos agricultura regenerativa, estufas científicas climatizadas e programas de fomento com produtores locais associados."
+        : "We implement regenerative agriculture, scientific climate-controlled greenhouses, and inclusive outgrower support schemes."
     },
     {
       image: "https://visa.onlyvibes.online/wp-content/uploads/2026/06/3.png",
-      tag: language === "pt" ? "Industrialização de Alto Teor" : "Industrialization Excellence",
-      title: language === "pt" ? "Complexo de Extração e Refinação Integrado." : "Integrated Thermal Oil Extraction Plant.",
-      highlightTitle: "Made in Angola.",
-      desc: language === "pt" ? "Transformamos o fruto em óleos premium, margarinas puras e sabão ecológico azul e vermelho." : "We refine high-grade organic palm oils, margarines, and premium pure glycerin soaps."
+      tag: language === "pt" ? "Industrialização e Substituição de Importações" : "Industrialization & Import Substitution",
+      title: language === "pt" ? "Complexo de Extração e Refinação Integrado." : "Integrated Thermal Extraction & Refining Complex.",
+      highlightTitle: language === "pt" ? "100% Produzido em Angola." : "100% Produced in Angola.",
+      desc: language === "pt" 
+        ? "Transformamos o fruto em óleos refinados de mesa, gorduras vegetais para a indústria alimentar e sabões de higiene de alto rendimento."
+        : "Transforming raw harvest into refined table cooking oils, food-grade vegetable fats, and industrial high-performance sanitation soaps."
     }
   ];
 
@@ -36,7 +46,7 @@ export default function Hero() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 7000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const handleNext = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -46,209 +56,216 @@ export default function Hero() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  const triggerPartnerModal = () => {
+    window.dispatchEvent(new CustomEvent("open-partner-modal"));
+  };
+
   const stats = [
     {
-      icon: <Sprout className="w-5 h-5 text-brand-300" />,
-      value: "5.000",
-      label: "Hectares Planeados",
-      desc: "Área total projetada de cultivo",
+      icon: <Sprout className="w-5 h-5 text-[#A89558]" />,
+      value: "5.000 ha",
+      label: language === "pt" ? "Hectares de Cultivo" : "Cultivation Hectares",
+      desc: language === "pt" ? "Plantações em Cabinda" : "Plantations in Cabinda",
     },
     {
-      icon: <Building2 className="w-5 h-5 text-brand-300" />,
-      value: "35.000",
-      label: "Toneladas/Ano",
-      desc: "Capacidade de processamento industrial",
+      icon: <Building2 className="w-5 h-5 text-[#A89558]" />,
+      value: "35.000 ton/ano",
+      label: language === "pt" ? "Capacidade Industrial" : "Industrial Capacity",
+      desc: language === "pt" ? "Processamento e refinação" : "Processing and refining",
     },
     {
-      icon: <MapPin className="w-5 h-5 text-brand-300" />,
-      value: "Cabinda",
-      label: "Angola",
-      desc: "Localização estratégica tropical",
+      icon: <MapPin className="w-5 h-5 text-[#A89558]" />,
+      value: "Cabinda, Angola",
+      label: language === "pt" ? "Localização Estratégica" : "Strategic Location",
+      desc: language === "pt" ? "Polo agro-industrial integrado" : "Integrated agro-industrial hub",
     },
     {
-      icon: <Layers className="w-5 h-5 text-brand-300" />,
-      value: "Integrada",
-      label: "Produção Integrada",
-      desc: "Do viveiro ao produto processado final",
+      icon: <Layers className="w-5 h-5 text-[#A89558]" />,
+      value: "100% Integrado",
+      label: language === "pt" ? "Ciclo Fechado & Sustentável" : "Closed & Sustainable Cycle",
+      desc: language === "pt" ? "Do viveiro à distribuição" : "From seedling to distribution",
     },
   ];
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - 80,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <section className="relative min-h-[92vh] lg:min-h-[100vh] flex flex-col justify-center bg-brand-950 text-white overflow-hidden pt-28 pb-12 lg:pb-0" id="hero-section">
-      {/* Background Slideshow with Dark Vignette/Overlay for Premium contrast */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between bg-[#001710] text-white overflow-hidden pt-28 pb-10" id="hero-section">
+      
+      {/* Background Images Slideshow (Full Bleed Background) */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <AnimatePresence mode="wait">
-          <motion.img
+          <motion.div
             key={currentSlide}
-            src={slides[currentSlide].image}
-            alt="Slide de Fundo CAPOC"
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 0.45, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.8 }}
-            className="w-full h-full object-cover select-none"
-            referrerPolicy="no-referrer"
-          />
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].title}
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                const fallbackImgs = [
+                  "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg",
+                  "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.33.jpeg",
+                  "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.32.jpeg",
+                ];
+                e.currentTarget.src = fallbackImgs[currentSlide % fallbackImgs.length];
+              }}
+            />
+          </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/85 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-transparent to-brand-950/60 z-10" />
+
+        {/* Sophisticated Multi-layer Cinematic Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001710]/95 via-[#002016]/85 to-[#001710]/40 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#001710]/80 via-transparent to-[#001710]" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#A89558]/10 rounded-full blur-3xl pointer-events-none" />
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full h-full flex flex-col justify-between">
-        
-        {/* Navigation Arrow buttons overlay for high-end feel */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col space-y-3 z-30 hidden md:flex">
-          <button
-            onClick={handlePrev}
-            className="p-3 rounded-full bg-white/5 hover:bg-white/11 text-white border border-white/10 hover:border-white/20 transition backdrop-blur-md cursor-pointer"
-            aria-label="Slide anterior"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={handleNext}
-            className="p-3 rounded-full bg-white/5 hover:bg-white/11 text-white border border-white/10 hover:border-white/20 transition backdrop-blur-md cursor-pointer"
-            aria-label="Próximo slide"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+      {/* Slide Navigation Arrows */}
+      <button
+        onClick={handlePrev}
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/30 hover:bg-black/60 text-white/80 hover:text-white border border-white/10 hover:border-white/30 backdrop-blur-md transition-all duration-300 z-30 focus:outline-none cursor-pointer hidden md:flex items-center justify-center shadow-lg"
+        aria-label="Previous Slide"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
 
-        {/* Main Content Info block */}
-        <div className="max-w-3xl mt-6 lg:mt-12">
+      <button
+        onClick={handleNext}
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/30 hover:bg-black/60 text-white/80 hover:text-white border border-white/10 hover:border-white/30 backdrop-blur-md transition-all duration-300 z-30 focus:outline-none cursor-pointer hidden md:flex items-center justify-center shadow-lg"
+        aria-label="Next Slide"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
 
-          {/* Majestic Hero Headline */}
-          <div className="min-h-[140px] sm:min-h-[160px] lg:min-h-[180px]">
-            <AnimatePresence mode="wait">
-              <motion.h1
-                key={`title-${currentSlide}`}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -18 }}
-                transition={{ duration: 0.45 }}
-                className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
-              >
-                {slides[currentSlide].title}{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-emerald-400 to-amber-300 block sm:inline">
+      {/* Main Content Area */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 w-full my-auto py-12">
+        <div className="max-w-3xl text-left">
+          
+          {/* Animated Main Title */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`title-${currentSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
+                {slides[currentSlide].title} <br className="hidden sm:block" />
+                <span className="text-[#A89558] drop-shadow-md">
                   {slides[currentSlide].highlightTitle}
                 </span>
-              </motion.h1>
-            </AnimatePresence>
-          </div>
+              </h1>
+            </motion.div>
+          </AnimatePresence>
 
-          <div className="min-h-[60px] sm:min-h-[80px] mt-4">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={`desc-${currentSlide}`}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.45, delay: 0.05 }}
-                className="text-base sm:text-lg lg:text-xl text-brand-100/90 leading-relaxed font-light"
-              >
-                {slides[currentSlide].desc}
-              </motion.p>
-            </AnimatePresence>
-          </div>
+          {/* Animated Description */}
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`desc-${currentSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-6 text-sm sm:text-base md:text-lg text-slate-200 font-light leading-relaxed max-w-2xl drop-shadow"
+            >
+              {slides[currentSlide].desc}
+            </motion.p>
+          </AnimatePresence>
 
-          {/* Action Buttons */}
+          {/* Interactive CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#projeto"
-              onClick={(e) => handleScrollToSection(e, "#projeto")}
-              className="px-8 py-4 bg-[#002016] text-[#A89558] border border-white/10 font-bold rounded-xl shadow-lg hover:bg-[#002016]/95 transition text-center"
-              id="hero-cta-prime"
-            >
-              {language === "pt" ? "Conheça o Projecto" : "Explore the Project"}
-            </a>
             <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-partner-modal"))}
-              className="px-8 py-4 bg-white/10 text-white border border-white/20 font-bold rounded-xl hover:bg-white/15 transition backdrop-blur-xs text-center"
-              id="hero-cta-sec"
+              onClick={triggerPartnerModal}
+              className="px-7 py-3.5 bg-[#A89558] hover:bg-[#bfa966] text-[#002016] font-extrabold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm tracking-wide uppercase flex items-center space-x-2 border border-[#A89558]/50 cursor-pointer"
+              id="hero-btn-partner"
             >
-              {t("nav_btn_partner")}
+              <Handshake className="w-4 h-4" />
+              <span>{t("hero_cta_partner")}</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate ? onNavigate("projectos") : null}
+              className="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl backdrop-blur-md border border-white/20 hover:border-white/40 transition-all duration-300 text-xs sm:text-sm tracking-wide flex items-center space-x-2 cursor-pointer shadow-lg"
+              id="hero-btn-project"
+            >
+              <span>{language === "pt" ? "Conhecer o Projecto" : "Explore The Project"}</span>
+              <ArrowRight className="w-4 h-4 text-[#A89558]" />
+            </button>
+
+            <button
+              onClick={() => onNavigate ? onNavigate("produtos") : null}
+              className="px-6 py-3.5 text-slate-300 hover:text-white font-medium text-xs sm:text-sm transition flex items-center space-x-1.5 underline decoration-[#A89558]/50 underline-offset-4 cursor-pointer"
+            >
+              <span>{language === "pt" ? "Ver Produtos" : "View Derivatives"}</span>
             </button>
           </motion.div>
 
-          {/* Slider bottom dots */}
-          <div className="flex items-center space-x-2 mt-8">
-            {slides.map((_, dotIdx) => (
+          {/* Slide Indicator Bar / Dots */}
+          <div className="mt-10 flex items-center space-x-3">
+            {slides.map((_, idx) => (
               <button
-                key={dotIdx}
-                onClick={() => setCurrentSlide(dotIdx)}
-                className={`w-3 h-3 rounded-full transition-all duration-350 cursor-pointer ${
-                  currentSlide === dotIdx 
-                    ? "bg-brand-400 w-8" 
-                    : "bg-white/25 hover:bg-white/40"
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+                  currentSlide === idx
+                    ? "w-10 bg-[#A89558]"
+                    : "w-2.5 bg-white/30 hover:bg-white/50"
                 }`}
-                aria-label={`Ir para slide ${dotIdx + 1}`}
+                aria-label={`Ir para slide ${idx + 1}`}
               />
             ))}
+            <span className="text-[11px] font-mono text-slate-400 ml-2">
+              0{currentSlide + 1} / 0{slides.length}
+            </span>
           </div>
-        </div>
 
-        {/* Floating Quick Stats Panel */}
+        </div>
+      </div>
+
+      {/* Embedded Dynamic Quick Statistics Band at the Bottom */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 sm:px-12 w-full mt-4">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 lg:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl relative z-10"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#001710]/85 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/10 shadow-2xl"
         >
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className={`flex flex-col p-3 ${
-                idx !== stats.length - 1 ? "sm:border-r border-white/10" : ""
+              className={`flex flex-col p-2.5 ${
+                idx !== stats.length - 1 ? "lg:border-r border-white/10" : ""
               }`}
             >
               <div className="flex items-center space-x-2.5">
-                <div className="p-1.5 rounded-lg bg-brand-500/25">
+                <div className="p-2 rounded-xl bg-white/5 text-[#A89558] border border-white/10 flex items-center justify-center">
                   {stat.icon}
                 </div>
-                <span className="font-mono text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <span className="font-mono text-lg sm:text-xl font-extrabold text-white">
                   {stat.value}
                 </span>
               </div>
-              <span className="mt-2 text-xs sm:text-sm font-semibold text-brand-200">
+              <span className="mt-2 text-xs font-semibold text-slate-200">
                 {stat.label}
               </span>
-              <span className="mt-1 text-[11px] text-brand-300/80 font-light">
+              <span className="mt-0.5 text-[11px] text-slate-400 font-light leading-snug">
                 {stat.desc}
               </span>
             </div>
           ))}
         </motion.div>
-
-        {/* Scroll down indicator absolute styling */}
-        <div className="hidden lg:flex justify-center mt-6">
-          <button
-            onClick={(e) => handleScrollToSection(e, "#sobre")}
-            className="flex flex-col items-center text-brand-300 hover:text-white transition focus:outline-none bg-transparent"
-            aria-label="Rolar para baixo"
-          >
-            <span className="text-[10px] font-mono tracking-widest uppercase mb-1">
-              Desvendar CAPOC
-            </span>
-            <ArrowDown className="w-4 h-4 animate-bounce" />
-          </button>
-        </div>
       </div>
+
     </section>
   );
 }

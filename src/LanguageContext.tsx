@@ -12,8 +12,9 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   pt: {
     // Navbar
+    nav_home: "Início",
     nav_about: "Sobre",
-    nav_project: "Projecto",
+    nav_project: "Projectos",
     nav_products: "Produtos",
     nav_impact: "Sustentabilidade",
     nav_gallery: "Galeria",
@@ -93,8 +94,9 @@ const translations: Record<Language, Record<string, string>> = {
     btn_close: "Fechar",
   },
   en: {
-    nav_about: "About Us",
-    nav_project: "The Project",
+    nav_home: "Home",
+    nav_about: "About",
+    nav_project: "Projects",
     nav_products: "Products",
     nav_impact: "Sustainability",
     nav_gallery: "Gallery",
@@ -165,8 +167,9 @@ const translations: Record<Language, Record<string, string>> = {
     btn_close: "Close",
   },
   fr: {
+    nav_home: "Accueil",
     nav_about: "À Propos",
-    nav_project: "Le Projet",
+    nav_project: "Projets",
     nav_products: "Produits",
     nav_impact: "Durabilité",
     nav_gallery: "Galerie",
@@ -237,8 +240,9 @@ const translations: Record<Language, Record<string, string>> = {
     btn_close: "Fermer",
   },
   es: {
+    nav_home: "Inicio",
     nav_about: "Sobre Nosotros",
-    nav_project: "El Proyecto",
+    nav_project: "Proyectos",
     nav_products: "Productos",
     nav_impact: "Sostenibilidad",
     nav_gallery: "Galería",
@@ -309,9 +313,10 @@ const translations: Record<Language, Record<string, string>> = {
     btn_close: "Cerrar",
   },
   zh: {
+    nav_home: "首页",
     nav_about: "关于我们",
-    nav_project: "项目概览",
-    nav_products: "科技产品",
+    nav_project: "项目工程",
+    nav_products: "产品中心",
     nav_impact: "可持续发展",
     nav_gallery: "实景画廊",
     nav_investors: "投资者关系",
@@ -381,8 +386,9 @@ const translations: Record<Language, Record<string, string>> = {
     btn_close: "关闭窗口",
   },
   ar: {
+    nav_home: "الرئيسية",
     nav_about: "من نحن",
-    nav_project: "المشروع",
+    nav_project: "المشاريع",
     nav_products: "المنتجات",
     nav_impact: "الاستدامة",
     nav_gallery: "المعرض",

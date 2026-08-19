@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, CheckCircle, Send, Users2, Landmark, Clock, ArrowRight, Sparkles, Handshake, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle, Send, Users2, Landmark, Clock, ArrowRight, Sparkles, Handshake, Globe, Instagram, Facebook, Linkedin } from "lucide-react";
 import { motion } from "motion/react";
 import { useLanguage } from "../LanguageContext";
 
@@ -193,6 +193,42 @@ export default function ContactForm() {
                         <a href="tel:+244955914659" className="text-[10px] font-mono text-gray-200 hover:text-white block font-semibold">955 91 46 59</a>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Official Social Media Channels */}
+                <div className="pt-2">
+                  <span className="block text-[11px] font-mono text-[#A89558] uppercase tracking-wide font-bold mb-2">
+                    {language === "pt" ? "Redes Sociais Oficiais" : "Official Social Networks"}
+                  </span>
+                  <div className="flex items-center space-x-3">
+                    <a
+                      href="https://www.instagram.com/capocaangola/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 px-3 py-2 bg-white/5 hover:bg-[#A89558] hover:text-[#002016] border border-white/10 hover:border-[#A89558] rounded-xl text-xs text-gray-200 transition duration-200"
+                    >
+                      <Instagram className="w-3.5 h-3.5" />
+                      <span className="font-mono text-[11px]">Instagram</span>
+                    </a>
+                    <a
+                      href="https://web.facebook.com/capocangola/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 px-3 py-2 bg-white/5 hover:bg-[#A89558] hover:text-[#002016] border border-white/10 hover:border-[#A89558] rounded-xl text-xs text-gray-200 transition duration-200"
+                    >
+                      <Facebook className="w-3.5 h-3.5" />
+                      <span className="font-mono text-[11px]">Facebook</span>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/capocaangola/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 px-3 py-2 bg-white/5 hover:bg-[#A89558] hover:text-[#002016] border border-white/10 hover:border-[#A89558] rounded-xl text-xs text-gray-200 transition duration-200"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" />
+                      <span className="font-mono text-[11px]">LinkedIn</span>
+                    </a>
                   </div>
                 </div>
 

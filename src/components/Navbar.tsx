@@ -93,14 +93,14 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
           <a
             href="#/"
             onClick={(e) => handleNavClick(e, "inicio")}
-            className="flex items-center group focus:outline-none cursor-pointer"
+            className="flex items-center group focus:outline-none cursor-pointer py-1"
             id="brand-logo-link"
           >
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shrink-0">
+            <div className="relative h-16 sm:h-20 md:h-24 w-auto min-w-[70px] flex items-center justify-center shrink-0">
               <img
                 src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-3.png"
                 alt="CAPOC Logo"
-                className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-full w-auto max-h-24 object-contain transition-all duration-300 group-hover:scale-105 filter drop-shadow-md"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-2.png";

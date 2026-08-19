@@ -41,6 +41,18 @@ function AppContent() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  // Block right-click context menu across the entire website as requested
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      return false;
+    };
+    document.addEventListener("contextmenu", handleContextMenu);
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, []);
+
   const handleNavigate = (pageKey: string) => {
     let normalizedPage: PageType = "inicio";
     if (pageKey === "sobre") normalizedPage = "sobre";

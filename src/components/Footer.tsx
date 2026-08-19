@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, MapPin, ChevronRight, Facebook, Linkedin, Twitter, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, ChevronRight, Facebook, Linkedin, Instagram } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 
 interface FooterProps {
@@ -47,12 +47,12 @@ export default function Footer({ onNavigate }: FooterProps) {
               <a
                 href="#/"
                 onClick={(e) => handleNavClick(e, "inicio")}
-                className="relative w-20 h-20 flex items-center justify-center shrink-0 cursor-pointer"
+                className="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center shrink-0 cursor-pointer"
               >
                 <img
                   src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-3.png"
                   alt="CAPOC Logo"
-                  className="w-full h-full object-contain shadow-md rounded-full bg-white/5 p-1 border border-white/10"
+                  className="w-full h-full object-contain drop-shadow-xl"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/logo-2.png";
@@ -77,17 +77,35 @@ export default function Footer({ onNavigate }: FooterProps) {
 
             {/* Social icons */}
             <div className="flex items-center space-x-3 pt-2">
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition" aria-label="LinkedIn">
-                <Linkedin className="w-4 h-4" />
+              <a 
+                href="https://www.instagram.com/capocaangola/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2.5 bg-white/5 hover:bg-[#A89558] hover:text-[#002016] rounded-full text-slate-300 transition duration-200 border border-white/10 hover:border-[#A89558]" 
+                aria-label="Instagram"
+                title="Instagram: @capocaangola"
+              >
+                <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition" aria-label="Facebook">
+              <a 
+                href="https://web.facebook.com/capocangola/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2.5 bg-white/5 hover:bg-[#A89558] hover:text-[#002016] rounded-full text-slate-300 transition duration-200 border border-white/10 hover:border-[#A89558]" 
+                aria-label="Facebook"
+                title="Facebook: @capocangola"
+              >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition" aria-label="Twitter">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition" aria-label="Website">
-                <Globe className="w-4 h-4" />
+              <a 
+                href="https://www.linkedin.com/company/capocaangola/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2.5 bg-white/5 hover:bg-[#A89558] hover:text-[#002016] rounded-full text-slate-300 transition duration-200 border border-white/10 hover:border-[#A89558]" 
+                aria-label="LinkedIn"
+                title="LinkedIn: @capocaangola"
+              >
+                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -199,7 +217,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Brand Bottom Legal copyright and certification */}
         <div className="mt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-mono text-slate-500 font-light">
           <div className="text-center sm:text-left space-y-1">
-            <p>© 2026 CAPOC – Cabinda Palm Oil Corporation. Todos os direitos reservados.</p>
+            <p>© 2026 CAPOC – Cabinda Palm Oil Corporation. Todos os direitos reservados Ponto & Virgula.</p>
           </div>
           <div className="mt-4 sm:mt-0 flex items-center space-x-4 border-l border-white/10 pl-4">
             <span className="text-[#A89558]/80">CABINDA • ANGOLA</span>

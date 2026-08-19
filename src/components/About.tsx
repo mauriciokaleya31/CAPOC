@@ -78,11 +78,6 @@ export default function About() {
       icon: <GraduationCap className="w-5 h-5 text-[#A89558]" />,
       desc: language === "pt" ? "Formação técnica permanente em microbiologia botânica vegetal, automação fabril e mecanização de colheita agrícola para residentes locais." : "Ongoing technical training in plant botanical microbiology, factory automation, and mechanical agriculture harvesting for local residents.",
     },
-    {
-      title: language === "pt" ? "Industrialização Nacional" : "National Industrialization",
-      icon: <Factory className="w-5 h-5 text-[#A89558]" />,
-      desc: language === "pt" ? "Posicionamento estratégico de Angola fora da volatilidade pura do crude, estruturando uma nova fileira de valor biológico estável e duradouro." : "Strategic positioning of Angola away from raw oil volatility, structuring a new, stable, and sustainable bio-industrial value chain.",
-    },
   ];
 
   return (
@@ -319,15 +314,19 @@ export default function About() {
 
       {/* ================= SECTION 3: SUSTENTABILIDADE & RESPONSABILIDADE AMBIENTAL (INTEGRADA NO SOBRE) ================= */}
       <section className="py-24 bg-[#002016] text-white relative overflow-hidden" id="sustentabilidade-integrada">
-        {/* Background texture */}
-        <div className="absolute inset-0 z-0">
+        {/* Background texture with rich visible landscape */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.36.jpeg"
             alt="Fundo Florestal Cabinda"
-            className="w-full h-full object-cover opacity-15 filter contrast-125 saturate-110"
+            className="w-full h-full object-cover opacity-40 filter brightness-90 contrast-125 saturate-125 scale-105"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              e.currentTarget.src = "https://visa.onlyvibes.online/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-18-at-18.50.43.jpeg";
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#002016] via-[#002016]/95 to-[#002016]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#002016]/85 via-[#002016]/70 to-[#002016]/90" />
+          <div className="absolute inset-0 bg-[radial-gradient(#A89558_1px,transparent_1px)] [background-size:32px_32px] opacity-15" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -367,38 +366,6 @@ export default function About() {
                 </p>
               </motion.div>
             ))}
-          </div>
-
-          {/* Circular Zero-Waste Banner */}
-          <div className="p-8 sm:p-10 bg-gradient-to-r from-[#013022] to-[#002016] border border-[#A89558]/30 rounded-3xl relative overflow-hidden shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-4">
-                <div className="flex items-center space-x-2 text-[#A89558] font-mono text-xs font-bold uppercase tracking-wider">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>{language === "pt" ? "Protocolo de Carbono Circular" : "Circular Carbon Protocol"}</span>
-                </div>
-                <h4 className="text-2xl sm:text-3xl font-extrabold text-white">
-                  {language === "pt" ? "100% Processamento Sem Aditivos Químicos Nocivos" : "100% Processing with Zero Harmful Chemical Additives"}
-                </h4>
-                <p className="text-gray-300 text-sm font-light leading-relaxed">
-                  {language === "pt"
-                    ? "Cada lote de palmeiras é georreferenciado e auditado por biólogos agrícolas. Os resíduos de fibra e casca produzidos na extração física servem como adubo de cobertura e bioenergia, garantindo impacto ambiental positivo."
-                    : "Every palm crop parcel is georeferenced and audited by agricultural specialists. Fiber and shell residues produced during mechanical extraction serve as organic mulch and clean bioenergy."}
-                </p>
-              </div>
-
-              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-center justify-center gap-4 text-center border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
-                <div>
-                  <span className="block font-mono text-4xl sm:text-5xl font-black text-[#A89558]">100%</span>
-                  <span className="block text-[11px] text-gray-300 font-medium uppercase tracking-wider mt-1">
-                    {language === "pt" ? "Orgânico & Sustentável" : "Organic & Sustainable"}
-                  </span>
-                </div>
-                <div className="px-4 py-2 bg-[#A89558]/20 border border-[#A89558]/40 rounded-xl text-xs text-[#EAE6DD] font-mono font-bold">
-                  Zero Queimas • Zero Emissões
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -455,15 +422,6 @@ export default function About() {
                     +450 {language === "pt" ? "Famílias" : "Families"}
                   </div>
                 </div>
-              </div>
-              
-              <div className="border-l-4 border-[#A89558] pl-4 py-2 bg-slate-50 pr-4 rounded-r-xl">
-                <p className="text-slate-700 font-medium italic text-xs leading-relaxed">
-                  {language === "pt"
-                    ? '"Cada vaga industrial que estabelecemos em Cabinda reduz a dependência de produtos importados e reitera a dignidade social concreta às nossas famílias."'
-                    : '"Every agricultural livelihood we establish in Cabinda mitigates high import dependence and rewards regional communities with secure, lasting progress."'
-                  }
-                </p>
               </div>
             </div>
 

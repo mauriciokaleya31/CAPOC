@@ -1,6 +1,6 @@
 import Hero from "./Hero";
 import About from "./About";
-import ContactForm from "./ContactForm";
+import ProjectFastSlider from "./ProjectFastSlider";
 import { useLanguage } from "../LanguageContext";
 
 interface HomeViewProps {
@@ -18,8 +18,9 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
       {/* 2. Full Institutional Presentation & The 3 Pillars (Missão, Visão, Valores) + Integrated Sustainability */}
       <About />
 
-      {/* 3. Official Contact & Partnership Form, Office Locations & Direct Lines */}
-      <ContactForm />
+      {/* 3. Fast Project Slider & Dynamic Field Operations */}
+      <ProjectFastSlider onNavigate={onNavigate} />
     </div>
   );
 }
+
